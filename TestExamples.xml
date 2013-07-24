@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <UncertML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://www.uncertml.org/Test testSchema.xsd" 
  xmlns="http://www.uncertml.org/Test"
@@ -191,5 +191,20 @@
     <!-- TODO verify that this approach is suitable - also seen in the discreteProbability -->
   </un:counts>
  </un:ConfusionMatrix> 
+    
+     <un:ConfusionMatrix definition="http://www.uncertml.org/metrics/confusion-matrix">
+        <!-- TODO - change this URL!! at the moment it's 'statistics'-->
+  <un:sourceCategories><un:arrayVar varId="arrayOfLabels"/></un:sourceCategories>
+  <un:targetCategories><un:arrayVar varId="arrayOfLabels"/></un:targetCategories>
+  <un:counts><un:arrayVar varId="arrayOfValues"/></un:counts>
+ </un:ConfusionMatrix> 
+    
+     <un:ConfusionMatrix definition="http://www.uncertml.org/metrics/confusion-matrix">
+        <!-- TODO - change this URL!! at the moment it's 'statistics'-->
+  <un:sourceCategories><un:sVal>Red</un:sVal><un:var varId="secondLabel"/><un:sVal>Blue</un:sVal></un:sourceCategories>
+  <un:targetCategories><un:arrayVar varId="arrayOfLabels"/></un:targetCategories>
+  <un:counts><un:arrayVar varId="arrayOfValues"/></un:counts>
+ </un:ConfusionMatrix> 
+    
 </Metrics>
 </UncertML>

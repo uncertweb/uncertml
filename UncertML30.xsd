@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <!--Created with Liquid XML Studio 2012 Developer Edition 10.1.2.4113 (http://www.liquid-technologies.com)-->
 <xs:schema xmlns:un="http://www.uncertml.org/3.0" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.uncertml.org/3.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <!--==== Basic Types ====-->
@@ -94,6 +94,12 @@
         <xs:attribute name="varId" type="un:symbolType" use="required" />
     </xs:complexType>
     <xs:element name="var" type="un:varRefType" />
+    
+    <xs:complexType name="arrayVarRefType">
+        <xs:attribute name="varId" type="un:symbolType" use="required" />
+    </xs:complexType>
+    <xs:element name="arrayVar" type="un:arrayVarRefType" />
+    
     <xs:complexType name="KurtosisValueType">
         <xs:complexContent>
             <xs:extension base="un:kurtosisValue">
@@ -169,18 +175,31 @@
         </xs:complexContent>
     </xs:complexType>
     <xs:complexType name="NaturalNumberArrayValueType">
-        <xs:sequence>
-            <xs:element name="rVal" type="un:natNum" minOccurs="1" maxOccurs="unbounded" />
-        </xs:sequence>
+        <xs:choice>
+            <xs:sequence minOccurs="1" maxOccurs="unbounded">
+                <xs:choice>
+                    <xs:element name="rVal" type="un:natNum"/>
+                    <xs:element ref="un:var" />
+                </xs:choice>
+            </xs:sequence>
+            <xs:element ref="un:arrayVar" />
+        </xs:choice>
     </xs:complexType>
     <xs:complexType name="CategoricalArrayValueType">
-        <xs:sequence>
-            <xs:element name="sVal" type="xs:string" minOccurs="1" maxOccurs="unbounded" />
-            <!-- TODO  
-            These are arrays of simple (though sometimes restricted) types.
-            Should the string array and natural number array also be able to reference variables? 
-            If so, should it be one for the whole array, or one for each element?... -->
-        </xs:sequence>
+        <xs:choice>
+            <xs:sequence minOccurs="1" maxOccurs="unbounded">
+                <xs:choice>
+                    <xs:element name="sVal" type="xs:string" minOccurs="1" maxOccurs="unbounded" />
+                    <xs:element ref="un:var" />
+                </xs:choice>
+                <!-- TODO  
+                These are arrays of simple (though sometimes restricted) types.
+                Should the string array and natural number array also be able to reference variables? 
+                If so, should it be one for the whole array, or one for each element?... 
+                ANSWER: here, we let any element reference a variable - when the array is used as an element, we'll allow a var instead-->
+            </xs:sequence>
+            <xs:element ref="un:arrayVar" />
+        </xs:choice>
     </xs:complexType>
     <!--==== Inheritance Types ====-->
     <xs:element name="AbstractUncertainty" type="un:AbstractUncertaintyType" abstract="true" />
