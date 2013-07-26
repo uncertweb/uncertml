@@ -1,165 +1,167 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <!--Created with Liquid XML Studio 2012 Developer Edition 10.1.2.4113 (http://www.liquid-technologies.com)-->
-<xs:schema xmlns:un="http://www.uncertml.org/3.0" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.uncertml.org/3.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:un="http://www.uncertml.org/3.0" attributeFormDefault="unqualified"
+    elementFormDefault="qualified" targetNamespace="http://www.uncertml.org/3.0"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <!--==== Basic Types ====-->
     <xs:simpleType name="kurtosis">
         <xs:restriction base="xs:double">
-            <xs:minInclusive value="-2" />
+            <xs:minInclusive value="-2"/>
         </xs:restriction>
     </xs:simpleType>
     <xs:simpleType name="normalisedDouble">
         <xs:restriction base="xs:double">
-            <xs:minInclusive value="-1.0" />
-            <xs:maxInclusive value="1.0" />
+            <xs:minInclusive value="-1.0"/>
+            <xs:maxInclusive value="1.0"/>
         </xs:restriction>
     </xs:simpleType>
     <xs:simpleType name="posReal">
         <xs:restriction base="xs:double">
-            <xs:minExclusive value="0.0" />
+            <xs:minExclusive value="0.0"/>
         </xs:restriction>
     </xs:simpleType>
     <xs:simpleType name="natNum">
         <xs:restriction base="xs:integer">
-            <xs:minInclusive value="0" />
+            <xs:minInclusive value="0"/>
         </xs:restriction>
     </xs:simpleType>
     <xs:simpleType name="posNatNum">
         <xs:restriction base="xs:integer">
-            <xs:minInclusive value="1" />
+            <xs:minInclusive value="1"/>
         </xs:restriction>
     </xs:simpleType>
     <xs:complexType name="kurtosisValue">
         <xs:choice maxOccurs="1">
-            <xs:element name="kVal" type="un:kurtosis" />
-            <xs:element ref="un:var" />
+            <xs:element name="kVal" type="un:kurtosis"/>
+            <xs:element ref="un:var"/>
         </xs:choice>
     </xs:complexType>
     <xs:complexType name="positiveNaturalNumber">
         <xs:choice minOccurs="1" maxOccurs="1">
-            <xs:element name="pnVal" type="un:posNatNum" />
-            <xs:element ref="un:var" />
+            <xs:element name="pnVal" type="un:posNatNum"/>
+            <xs:element ref="un:var"/>
         </xs:choice>
     </xs:complexType>
     <xs:complexType name="naturalNumber">
         <xs:choice minOccurs="1" maxOccurs="1">
-            <xs:element name="nVal" type="un:natNum" />
-            <xs:element ref="un:var" />
+            <xs:element name="nVal" type="un:natNum"/>
+            <xs:element ref="un:var"/>
         </xs:choice>
     </xs:complexType>
     <xs:simpleType name="prob">
         <xs:restriction base="xs:double">
-            <xs:minInclusive value="0.0" />
-            <xs:maxInclusive value="1.0" />
+            <xs:minInclusive value="0.0"/>
+            <xs:maxInclusive value="1.0"/>
         </xs:restriction>
     </xs:simpleType>
     <xs:complexType name="probability">
         <xs:choice minOccurs="1" maxOccurs="1">
-            <xs:element name="pVal" type="un:prob" />
-            <xs:element ref="un:var" />
+            <xs:element name="pVal" type="un:prob"/>
+            <xs:element ref="un:var"/>
         </xs:choice>
     </xs:complexType>
     <xs:complexType name="positiveRealNumber">
         <xs:choice minOccurs="1" maxOccurs="1">
-            <xs:element name="prVal" type="un:posReal" />
-            <xs:element ref="un:var" />
+            <xs:element name="prVal" type="un:posReal"/>
+            <xs:element ref="un:var"/>
         </xs:choice>
     </xs:complexType>
     <xs:complexType name="double">
         <xs:choice minOccurs="1" maxOccurs="1">
-            <xs:element name="rVal" type="xs:double" />
-            <xs:element ref="un:var" />
+            <xs:element name="rVal" type="xs:double"/>
+            <xs:element ref="un:var"/>
         </xs:choice>
     </xs:complexType>
     <xs:complexType name="integer">
         <xs:choice minOccurs="1" maxOccurs="1">
-            <xs:element name="iVal" type="xs:integer" />
-            <xs:element ref="un:var" />
+            <xs:element name="iVal" type="xs:integer"/>
+            <xs:element ref="un:var"/>
         </xs:choice>
     </xs:complexType>
     <xs:complexType name="string">
         <xs:choice minOccurs="1" maxOccurs="1">
-            <xs:element name="sVal" type="xs:string" />
-            <xs:element ref="un:var" />
+            <xs:element name="sVal" type="xs:string"/>
+            <xs:element ref="un:var"/>
         </xs:choice>
     </xs:complexType>
     <xs:attributeGroup name="HREFAttributeGroup">
-        <xs:attribute name="href" type="xs:anyURI" use="optional" />
-        <xs:attribute name="mimeType" type="xs:string" use="optional" />
+        <xs:attribute name="href" type="xs:anyURI" use="optional"/>
+        <xs:attribute name="mimeType" type="xs:string" use="optional"/>
     </xs:attributeGroup>
     <xs:simpleType name="symbolType">
-        <xs:restriction base="xs:Name" />
+        <xs:restriction base="xs:Name"/>
     </xs:simpleType>
     <xs:complexType name="varRefType">
         <!--xs:attribute name="symbol" use="required"/-->
-        <xs:attribute name="varId" type="un:symbolType" use="required" />
+        <xs:attribute name="varId" type="un:symbolType" use="required"/>
     </xs:complexType>
-    <xs:element name="var" type="un:varRefType" />
-    
+    <xs:element name="var" type="un:varRefType"/>
+
     <xs:complexType name="arrayVarRefType">
-        <xs:attribute name="varId" type="un:symbolType" use="required" />
+        <xs:attribute name="varId" type="un:symbolType" use="required"/>
     </xs:complexType>
-    <xs:element name="arrayVar" type="un:arrayVarRefType" />
-    
+    <xs:element name="arrayVar" type="un:arrayVarRefType"/>
+
     <xs:complexType name="KurtosisValueType">
         <xs:complexContent>
             <xs:extension base="un:kurtosisValue">
-                <xs:attributeGroup ref="un:HREFAttributeGroup" />
+                <xs:attributeGroup ref="un:HREFAttributeGroup"/>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
     <xs:complexType name="NormalisedValueType">
         <xs:simpleContent>
             <xs:extension base="un:normalisedDouble">
-                <xs:attributeGroup ref="un:HREFAttributeGroup" />
+                <xs:attributeGroup ref="un:HREFAttributeGroup"/>
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>
     <xs:complexType name="ContinuousValueType">
         <xs:complexContent>
             <xs:extension base="un:double">
-                <xs:attributeGroup ref="un:HREFAttributeGroup" />
+                <xs:attributeGroup ref="un:HREFAttributeGroup"/>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
     <xs:complexType name="DiscreteValueType">
         <xs:complexContent>
             <xs:extension base="un:integer">
-                <xs:attributeGroup ref="un:HREFAttributeGroup" />
+                <xs:attributeGroup ref="un:HREFAttributeGroup"/>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
     <xs:complexType name="CategoricalValueType">
         <xs:complexContent>
             <xs:extension base="un:string">
-                <xs:attributeGroup ref="un:HREFAttributeGroup" />
+                <xs:attributeGroup ref="un:HREFAttributeGroup"/>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
     <xs:complexType name="ProbabilityValueType">
         <xs:complexContent>
             <xs:extension base="un:probability">
-                <xs:attributeGroup ref="un:HREFAttributeGroup" />
+                <xs:attributeGroup ref="un:HREFAttributeGroup"/>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
     <xs:complexType name="PositiveRealValueType">
         <xs:complexContent>
             <xs:extension base="un:positiveRealNumber">
-                <xs:attributeGroup ref="un:HREFAttributeGroup" />
+                <xs:attributeGroup ref="un:HREFAttributeGroup"/>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
     <xs:complexType name="NaturalNumberValueType">
         <xs:complexContent>
             <xs:extension base="un:naturalNumber">
-                <xs:attributeGroup ref="un:HREFAttributeGroup" />
+                <xs:attributeGroup ref="un:HREFAttributeGroup"/>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
     <xs:complexType name="PositiveNaturalNumberValueType">
         <xs:complexContent>
             <xs:extension base="un:positiveNaturalNumber">
-                <xs:attributeGroup ref="un:HREFAttributeGroup" />
+                <xs:attributeGroup ref="un:HREFAttributeGroup"/>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
@@ -168,8 +170,8 @@
             <xs:extension base="un:AbstractSummaryStatisticType">
                 <!-- TODO work out what the extension should be -->
                 <xs:sequence>
-                    <xs:element name="name" type="xs:string" />
-                    <xs:element name="probability" type="un:ProbabilityValueType" />
+                    <xs:element name="name" type="xs:string"/>
+                    <xs:element name="probability" type="un:ProbabilityValueType"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
@@ -179,18 +181,18 @@
             <xs:sequence minOccurs="1" maxOccurs="unbounded">
                 <xs:choice>
                     <xs:element name="rVal" type="un:natNum"/>
-                    <xs:element ref="un:var" />
+                    <xs:element ref="un:var"/>
                 </xs:choice>
             </xs:sequence>
-            <xs:element ref="un:arrayVar" />
+            <xs:element ref="un:arrayVar"/>
         </xs:choice>
     </xs:complexType>
     <xs:complexType name="CategoricalArrayValueType">
         <xs:choice>
             <xs:sequence minOccurs="1" maxOccurs="unbounded">
                 <xs:choice>
-                    <xs:element name="sVal" type="xs:string" minOccurs="1" maxOccurs="unbounded" />
-                    <xs:element ref="un:var" />
+                    <xs:element name="sVal" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>
+                    <xs:element ref="un:var"/>
                 </xs:choice>
                 <!-- TODO  
                 These are arrays of simple (though sometimes restricted) types.
@@ -198,104 +200,122 @@
                 If so, should it be one for the whole array, or one for each element?... 
                 ANSWER: here, we let any element reference a variable - when the array is used as an element, we'll allow a var instead-->
             </xs:sequence>
-            <xs:element ref="un:arrayVar" />
+            <xs:element ref="un:arrayVar"/>
         </xs:choice>
     </xs:complexType>
     <!--==== Inheritance Types ====-->
-    <xs:element name="AbstractUncertainty" type="un:AbstractUncertaintyType" abstract="true" />
+    <xs:element name="AbstractUncertainty" type="un:AbstractUncertaintyType" abstract="true"/>
     <xs:complexType name="AbstractUncertaintyType" abstract="true">
-        <xs:attribute name="definition" type="xs:string" use="required" />
+        <xs:attribute name="definition" type="xs:string" use="required"/>
         <!-- This will be a URI -->
     </xs:complexType>
     <!--...............................................................................-->
-    <xs:element name="AbstractMetric" type="un:AbstractMetricType" abstract="true" />
+    <xs:element name="AbstractMetric" type="un:AbstractMetricType" abstract="true"/>
     <xs:complexType name="AbstractMetricType" abstract="true">
-        <xs:attribute name="definition" type="xs:string" use="required" />
+        <xs:attribute name="definition" type="xs:string" use="required"/>
         <!-- This will be a URI -->
     </xs:complexType>
     <!--...............................................................................-->
-    <xs:element name="AbstractDistribution" type="un:AbstractDistributionType" substitutionGroup="un:AbstractUncertainty" abstract="true" />
+    <xs:element name="AbstractDistribution" type="un:AbstractDistributionType"
+        substitutionGroup="un:AbstractUncertainty" abstract="true"/>
     <xs:complexType name="AbstractDistributionType" abstract="true">
         <xs:complexContent>
-            <xs:extension base="un:AbstractUncertaintyType" />
+            <xs:extension base="un:AbstractUncertaintyType"/>
         </xs:complexContent>
     </xs:complexType>
     <!--...............................................................................-->
-    <xs:element name="AbstractContinuousDistribution" type="un:AbstractContinuousDistributionType" substitutionGroup="un:AbstractDistribution" abstract="true" />
+    <xs:element name="AbstractContinuousDistribution" type="un:AbstractContinuousDistributionType"
+        substitutionGroup="un:AbstractDistribution" abstract="true"/>
     <xs:complexType name="AbstractContinuousDistributionType" abstract="true">
         <xs:complexContent>
-            <xs:extension base="un:AbstractDistributionType" />
+            <xs:extension base="un:AbstractDistributionType"/>
         </xs:complexContent>
     </xs:complexType>
     <!--...............................................................................-->
-    <xs:element name="AbstractContinuousUnivariateDistribution" type="un:AbstractContinuousUnivariateDistributionType" substitutionGroup="un:AbstractDistribution" abstract="true" />
+    <xs:element name="AbstractContinuousUnivariateDistribution"
+        type="un:AbstractContinuousUnivariateDistributionType"
+        substitutionGroup="un:AbstractDistribution" abstract="true"/>
     <xs:complexType name="AbstractContinuousUnivariateDistributionType" abstract="true">
         <xs:complexContent>
-            <xs:extension base="un:AbstractDistributionType" />
+            <xs:extension base="un:AbstractDistributionType"/>
         </xs:complexContent>
     </xs:complexType>
     <!--...............................................................................-->
-    <xs:element name="AbstractContinuousMultivariateDistribution" type="un:AbstractContinuousMultivariateDistributionType" substitutionGroup="un:AbstractDistribution" abstract="true" />
+    <xs:element name="AbstractContinuousMultivariateDistribution"
+        type="un:AbstractContinuousMultivariateDistributionType"
+        substitutionGroup="un:AbstractDistribution" abstract="true"/>
     <xs:complexType name="AbstractContinuousMultivariateDistributionType" abstract="true">
         <xs:complexContent>
-            <xs:extension base="un:AbstractDistributionType" />
+            <xs:extension base="un:AbstractDistributionType"/>
         </xs:complexContent>
     </xs:complexType>
     <!--...............................................................................-->
-    <xs:element name="AbstractCategoricalDistribution" type="un:AbstractCategoricalDistributionType" substitutionGroup="un:AbstractDistribution" abstract="true" />
+    <xs:element name="AbstractCategoricalDistribution" type="un:AbstractCategoricalDistributionType"
+        substitutionGroup="un:AbstractDistribution" abstract="true"/>
     <xs:complexType name="AbstractCategoricalDistributionType" abstract="true">
         <xs:complexContent>
-            <xs:extension base="un:AbstractDistributionType" />
+            <xs:extension base="un:AbstractDistributionType"/>
         </xs:complexContent>
     </xs:complexType>
     <!--...............................................................................-->
-    <xs:element name="AbstractCategoricalUnivariateDistribution" type="un:AbstractCategoricalUnivariateDistributionType" substitutionGroup="un:AbstractDistribution" abstract="true" />
+    <xs:element name="AbstractCategoricalUnivariateDistribution"
+        type="un:AbstractCategoricalUnivariateDistributionType"
+        substitutionGroup="un:AbstractDistribution" abstract="true"/>
     <xs:complexType name="AbstractCategoricalUnivariateDistributionType" abstract="true">
         <xs:complexContent>
-            <xs:extension base="un:AbstractDistributionType" />
+            <xs:extension base="un:AbstractDistributionType"/>
         </xs:complexContent>
     </xs:complexType>
     <!--...............................................................................-->
-    <xs:element name="AbstractCategoricalMultivariateDistribution" type="un:AbstractCategoricalMultivariateDistributionType" substitutionGroup="un:AbstractDistribution" abstract="true" />
+    <xs:element name="AbstractCategoricalMultivariateDistribution"
+        type="un:AbstractCategoricalMultivariateDistributionType"
+        substitutionGroup="un:AbstractDistribution" abstract="true"/>
     <xs:complexType name="AbstractCategoricalMultivariateDistributionType" abstract="true">
         <xs:complexContent>
-            <xs:extension base="un:AbstractDistributionType" />
+            <xs:extension base="un:AbstractDistributionType"/>
         </xs:complexContent>
     </xs:complexType>
     <!--...............................................................................-->
-    <xs:element name="AbstractDiscreteDistribution" type="un:AbstractDiscreteDistributionType" substitutionGroup="un:AbstractDistribution" abstract="true" />
+    <xs:element name="AbstractDiscreteDistribution" type="un:AbstractDiscreteDistributionType"
+        substitutionGroup="un:AbstractDistribution" abstract="true"/>
     <xs:complexType name="AbstractDiscreteDistributionType" abstract="true">
         <xs:complexContent>
-            <xs:extension base="un:AbstractDistributionType" />
+            <xs:extension base="un:AbstractDistributionType"/>
         </xs:complexContent>
     </xs:complexType>
     <!--...............................................................................-->
-    <xs:element name="AbstractDiscreteUnivariateDistribution" type="un:AbstractDiscreteUnivariateDistributionType" substitutionGroup="un:AbstractDistribution" abstract="true" />
+    <xs:element name="AbstractDiscreteUnivariateDistribution"
+        type="un:AbstractDiscreteUnivariateDistributionType"
+        substitutionGroup="un:AbstractDistribution" abstract="true"/>
     <xs:complexType name="AbstractDiscreteUnivariateDistributionType" abstract="true">
         <xs:complexContent>
-            <xs:extension base="un:AbstractDistributionType" />
+            <xs:extension base="un:AbstractDistributionType"/>
         </xs:complexContent>
     </xs:complexType>
     <!--...............................................................................-->
-    <xs:element name="AbstractDiscreteMultivariateDistribution" type="un:AbstractDiscreteMultivariateDistributionType" substitutionGroup="un:AbstractDistribution" abstract="true" />
+    <xs:element name="AbstractDiscreteMultivariateDistribution"
+        type="un:AbstractDiscreteMultivariateDistributionType"
+        substitutionGroup="un:AbstractDistribution" abstract="true"/>
     <xs:complexType name="AbstractDiscreteMultivariateDistributionType" abstract="true">
         <xs:complexContent>
-            <xs:extension base="un:AbstractDistributionType" />
+            <xs:extension base="un:AbstractDistributionType"/>
         </xs:complexContent>
     </xs:complexType>
     <!--...............................................................................-->
-    <xs:element name="AbstractSummaryStatistic" type="un:AbstractSummaryStatisticType" substitutionGroup="un:AbstractUncertainty" abstract="true" />
+    <xs:element name="AbstractSummaryStatistic" type="un:AbstractSummaryStatisticType"
+        substitutionGroup="un:AbstractUncertainty" abstract="true"/>
     <xs:complexType name="AbstractSummaryStatisticType" abstract="true">
         <xs:complexContent>
-            <xs:extension base="un:AbstractUncertaintyType" />
+            <xs:extension base="un:AbstractUncertaintyType"/>
         </xs:complexContent>
     </xs:complexType>
-    <xs:element name="AbstractSample" type="un:AbstractSampleType" substitutionGroup="un:AbstractUncertainty" abstract="true" />
+    <xs:element name="AbstractSample" type="un:AbstractSampleType"
+        substitutionGroup="un:AbstractUncertainty" abstract="true"/>
     <xs:complexType name="AbstractSampleType" abstract="true">
         <xs:complexContent>
             <xs:extension base="un:AbstractUncertaintyType">
                 <xs:sequence>
-                    <xs:element name="samplingMethodDescription" type="xs:string" minOccurs="0" />
+                    <xs:element name="samplingMethodDescription" type="xs:string" minOccurs="0"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
@@ -304,7 +324,7 @@
     <xs:element name="Mean" substitutionGroup="un:AbstractSummaryStatistic">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:MeanType" />
+                <xs:extension base="un:MeanType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -312,7 +332,7 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractSummaryStatisticType">
                 <xs:sequence>
-                    <xs:element name="value" type="un:ContinuousValueType" />
+                    <xs:element name="value" type="un:ContinuousValueType"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
@@ -320,7 +340,7 @@
     <xs:element name="Mode" substitutionGroup="un:AbstractSummaryStatistic">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:ModeType" />
+                <xs:extension base="un:ModeType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -328,8 +348,8 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractSummaryStatisticType">
                 <xs:choice>
-                    <xs:element name="value" type="un:ContinuousValueType" />
-                    <xs:element name="categories" type="un:CategoricalValueType" />
+                    <xs:element name="value" type="un:ContinuousValueType"/>
+                    <xs:element name="categories" type="un:CategoricalValueType"/>
                 </xs:choice>
             </xs:extension>
         </xs:complexContent>
@@ -337,7 +357,7 @@
     <xs:element name="Median" substitutionGroup="un:AbstractSummaryStatistic">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:MedianType" />
+                <xs:extension base="un:MedianType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -345,7 +365,7 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractSummaryStatisticType">
                 <xs:sequence>
-                    <xs:element name="value" type="un:ContinuousValueType" />
+                    <xs:element name="value" type="un:ContinuousValueType"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
@@ -353,7 +373,7 @@
     <xs:element name="Quantile" substitutionGroup="un:AbstractSummaryStatistic">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:QuantileType" />
+                <xs:extension base="un:QuantileType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -361,13 +381,13 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractSummaryStatisticType">
                 <xs:sequence>
-                    <xs:element name="value" type="un:ContinuousValueType" />
+                    <xs:element name="value" type="un:ContinuousValueType"/>
                 </xs:sequence>
                 <xs:attribute name="level" use="required">
                     <xs:simpleType>
                         <xs:restriction base="xs:double">
-                            <xs:minInclusive value="0.0" />
-                            <xs:maxInclusive value="1.0" />
+                            <xs:minInclusive value="0.0"/>
+                            <xs:maxInclusive value="1.0"/>
                         </xs:restriction>
                     </xs:simpleType>
                 </xs:attribute>
@@ -377,7 +397,7 @@
     <xs:element name="DiscreteProbability" substitutionGroup="un:AbstractSummaryStatistic">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:DiscreteProbabilityType" />
+                <xs:extension base="un:DiscreteProbabilityType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -385,7 +405,8 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractSummaryStatisticType">
                 <xs:sequence>
-                    <xs:element name="categoryProb" type="un:CategoricalProbabilityValueType" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="categoryProb" type="un:CategoricalProbabilityValueType"
+                        minOccurs="1" maxOccurs="1"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
@@ -393,7 +414,7 @@
     <xs:element name="Probability" substitutionGroup="un:AbstractSummaryStatistic">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:ProbabilityType" />
+                <xs:extension base="un:ProbabilityType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -401,19 +422,19 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractSummaryStatisticType">
                 <xs:sequence>
-                    <xs:element name="probability" type="un:ProbabilityValueType" />
+                    <xs:element name="probability" type="un:ProbabilityValueType"/>
                 </xs:sequence>
-                <xs:attribute name="gt" type="xs:double" />
-                <xs:attribute name="lt" type="xs:double" />
-                <xs:attribute name="ge" type="xs:double" />
-                <xs:attribute name="le" type="xs:double" />
+                <xs:attribute name="gt" type="xs:double"/>
+                <xs:attribute name="lt" type="xs:double"/>
+                <xs:attribute name="ge" type="xs:double"/>
+                <xs:attribute name="le" type="xs:double"/>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
     <xs:element name="Variance" substitutionGroup="un:AbstractSummaryStatistic">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:VarianceType" />
+                <xs:extension base="un:VarianceType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -421,7 +442,7 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractSummaryStatisticType">
                 <xs:sequence>
-                    <xs:element name="value" type="un:ContinuousValueType" />
+                    <xs:element name="value" type="un:ContinuousValueType"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
@@ -429,7 +450,7 @@
     <xs:element name="StandardDeviation" substitutionGroup="un:AbstractSummaryStatistic">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:StandardDeviationType" />
+                <xs:extension base="un:StandardDeviationType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -437,7 +458,7 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractSummaryStatisticType">
                 <xs:sequence>
-                    <xs:element name="value" type="un:ContinuousValueType" />
+                    <xs:element name="value" type="un:ContinuousValueType"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
@@ -445,7 +466,7 @@
     <xs:element name="Skewness" substitutionGroup="un:AbstractSummaryStatistic">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:SkewnessType" />
+                <xs:extension base="un:SkewnessType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -453,7 +474,7 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractSummaryStatisticType">
                 <xs:sequence>
-                    <xs:element name="value" type="un:ContinuousValueType" />
+                    <xs:element name="value" type="un:ContinuousValueType"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
@@ -461,7 +482,7 @@
     <xs:element name="ConfidenceInterval" substitutionGroup="un:AbstractSummaryStatistic">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:ConfidenceIntervalType" />
+                <xs:extension base="un:ConfidenceIntervalType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -469,8 +490,8 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractSummaryStatisticType">
                 <xs:sequence>
-                    <xs:element name="lower" type="un:QuantileType" />
-                    <xs:element name="upper" type="un:QuantileType" />
+                    <xs:element name="lower" type="un:QuantileType"/>
+                    <xs:element name="upper" type="un:QuantileType"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
@@ -478,7 +499,7 @@
     <xs:element name="StatisticsCollection" substitutionGroup="un:AbstractSummaryStatistic">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:StatisticsCollectionType" />
+                <xs:extension base="un:StatisticsCollectionType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -486,7 +507,7 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractSummaryStatisticType">
                 <xs:sequence maxOccurs="unbounded">
-                    <xs:element ref="un:AbstractSummaryStatistic" />
+                    <xs:element ref="un:AbstractSummaryStatistic"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
@@ -494,7 +515,7 @@
     <xs:element name="ConfusionMatrix" substitutionGroup="un:AbstractMetric">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:ConfusionMatrixType" />
+                <xs:extension base="un:ConfusionMatrixType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -503,9 +524,9 @@
             <xs:extension base="un:AbstractMetricType">
                 <!-- TODO - decide whether metrics too will have a subset of 'continuous', 'discrete' and 'categorical' -->
                 <xs:sequence>
-                    <xs:element name="sourceCategories" type="un:CategoricalArrayValueType" />
-                    <xs:element name="targetCategories" type="un:CategoricalArrayValueType" />
-                    <xs:element name="counts" type="un:NaturalNumberArrayValueType" />
+                    <xs:element name="sourceCategories" type="un:CategoricalArrayValueType"/>
+                    <xs:element name="targetCategories" type="un:CategoricalArrayValueType"/>
+                    <xs:element name="counts" type="un:NaturalNumberArrayValueType"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
@@ -513,7 +534,7 @@
     <xs:element name="CovarianceMatrix" substitutionGroup="un:AbstractSummaryStatistic">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:CovarianceMatrixType" />
+                <xs:extension base="un:CovarianceMatrixType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -521,9 +542,9 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractSummaryStatisticType">
                 <xs:sequence>
-                    <xs:element name="value" type="un:ContinuousValueType" />
+                    <xs:element name="value" type="un:ContinuousValueType"/>
                 </xs:sequence>
-                <xs:attribute name="dimension" type="un:natNum" use="required" />
+                <xs:attribute name="dimension" type="un:natNum" use="required"/>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
@@ -531,7 +552,7 @@
     <xs:element name="Range" substitutionGroup="un:AbstractSummaryStatistic">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:RangeType" />
+                <xs:extension base="un:RangeType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -539,8 +560,8 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractSummaryStatisticType">
                 <xs:sequence>
-                    <xs:element name="lower" type="un:ContinuousValueType" />
-                    <xs:element name="upper" type="un:ContinuousValueType" />
+                    <xs:element name="lower" type="un:ContinuousValueType"/>
+                    <xs:element name="upper" type="un:ContinuousValueType"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
@@ -548,7 +569,7 @@
     <xs:element name="CentredMoment" substitutionGroup="un:AbstractSummaryStatistic">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:CentredMomentType" />
+                <xs:extension base="un:CentredMomentType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -556,16 +577,16 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractSummaryStatisticType">
                 <xs:sequence>
-                    <xs:element name="value" type="un:ContinuousValueType" />
+                    <xs:element name="value" type="un:ContinuousValueType"/>
                 </xs:sequence>
-                <xs:attribute name="order" type="un:natNum" use="required" />
+                <xs:attribute name="order" type="un:natNum" use="required"/>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
     <xs:element name="Moment" substitutionGroup="un:AbstractSummaryStatistic">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:MomentType" />
+                <xs:extension base="un:MomentType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -573,16 +594,16 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractSummaryStatisticType">
                 <xs:sequence>
-                    <xs:element name="value" type="un:ContinuousValueType" />
+                    <xs:element name="value" type="un:ContinuousValueType"/>
                 </xs:sequence>
-                <xs:attribute name="order" type="un:natNum" use="required" />
+                <xs:attribute name="order" type="un:natNum" use="required"/>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
     <xs:element name="Quartile" substitutionGroup="un:AbstractSummaryStatistic">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:QuartileType" />
+                <xs:extension base="un:QuartileType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -590,15 +611,15 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractSummaryStatisticType">
                 <xs:sequence>
-                    <xs:element name="value" type="un:ContinuousValueType" />
+                    <xs:element name="value" type="un:ContinuousValueType"/>
                 </xs:sequence>
                 <xs:attribute name="level" use="required">
                     <xs:simpleType>
                         <xs:restriction base="xs:double">
-                            <xs:pattern value="0.25" />
-                            <xs:pattern value="0.50" />
-                            <xs:pattern value="0.75" />
-                            <xs:pattern value="1.00" />
+                            <xs:pattern value="0.25"/>
+                            <xs:pattern value="0.50"/>
+                            <xs:pattern value="0.75"/>
+                            <xs:pattern value="1.00"/>
                         </xs:restriction>
                     </xs:simpleType>
                 </xs:attribute>
@@ -608,7 +629,7 @@
     <xs:element name="Decile" substitutionGroup="un:AbstractSummaryStatistic">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:DecileType" />
+                <xs:extension base="un:DecileType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -616,13 +637,13 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractSummaryStatisticType">
                 <xs:sequence>
-                    <xs:element name="value" type="un:ContinuousValueType" />
+                    <xs:element name="value" type="un:ContinuousValueType"/>
                 </xs:sequence>
                 <xs:attribute name="level" use="required">
                     <xs:simpleType>
                         <xs:restriction base="xs:integer">
-                            <xs:minInclusive value="1" />
-                            <xs:maxInclusive value="9" />
+                            <xs:minInclusive value="1"/>
+                            <xs:maxInclusive value="9"/>
                         </xs:restriction>
                     </xs:simpleType>
                 </xs:attribute>
@@ -632,7 +653,7 @@
     <xs:element name="Percentile" substitutionGroup="un:AbstractSummaryStatistic">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:PercentileType" />
+                <xs:extension base="un:PercentileType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -640,13 +661,13 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractSummaryStatisticType">
                 <xs:sequence>
-                    <xs:element name="value" type="un:ContinuousValueType" />
+                    <xs:element name="value" type="un:ContinuousValueType"/>
                 </xs:sequence>
                 <xs:attribute name="level" use="required">
                     <xs:simpleType>
                         <xs:restriction base="xs:int">
-                            <xs:minInclusive value="0" />
-                            <xs:maxInclusive value="100" />
+                            <xs:minInclusive value="0"/>
+                            <xs:maxInclusive value="100"/>
                         </xs:restriction>
                     </xs:simpleType>
                 </xs:attribute>
@@ -656,7 +677,7 @@
     <xs:element name="Kurtosis" substitutionGroup="un:AbstractSummaryStatistic">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:KurtosisType" />
+                <xs:extension base="un:KurtosisType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -664,7 +685,7 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractSummaryStatisticType">
                 <xs:sequence>
-                    <xs:element name="value" type="un:KurtosisValueType" />
+                    <xs:element name="value" type="un:KurtosisValueType"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
@@ -672,7 +693,7 @@
     <xs:element name="CredibleInterval" substitutionGroup="un:AbstractSummaryStatistic">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:CredibleIntervalType" />
+                <xs:extension base="un:CredibleIntervalType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -680,8 +701,8 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractSummaryStatisticType">
                 <xs:sequence>
-                    <xs:element name="lower" type="un:QuantileType" />
-                    <xs:element name="upper" type="un:QuantileType" />
+                    <xs:element name="lower" type="un:QuantileType"/>
+                    <xs:element name="upper" type="un:QuantileType"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
@@ -689,7 +710,7 @@
     <xs:element name="Correlation" substitutionGroup="un:AbstractSummaryStatistic">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:CorrelationType" />
+                <xs:extension base="un:CorrelationType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -697,7 +718,7 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractSummaryStatisticType">
                 <xs:sequence>
-                    <xs:element name="value" type="un:NormalisedValueType" />
+                    <xs:element name="value" type="un:NormalisedValueType"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
@@ -705,7 +726,7 @@
     <xs:element name="CoefficientOfVariation" substitutionGroup="un:AbstractSummaryStatistic">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:CoefficientOfVariationType" />
+                <xs:extension base="un:CoefficientOfVariationType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -713,7 +734,7 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractSummaryStatisticType">
                 <xs:sequence>
-                    <xs:element name="value" type="un:ContinuousValueType" />
+                    <xs:element name="value" type="un:ContinuousValueType"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
@@ -721,7 +742,7 @@
     <xs:element name="InterquartileRange" substitutionGroup="un:AbstractSummaryStatistic">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:InterquartileRangeType" />
+                <xs:extension base="un:InterquartileRangeType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -729,17 +750,18 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractSummaryStatisticType">
                 <xs:sequence>
-                    <xs:element name="lower" type="un:ContinuousValueType" />
-                    <xs:element name="upper" type="un:ContinuousValueType" />
+                    <xs:element name="lower" type="un:ContinuousValueType"/>
+                    <xs:element name="upper" type="un:ContinuousValueType"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
     <!--==== Distributions ====-->
-    <xs:element name="DirichletDistribution" substitutionGroup="un:AbstractContinuousMultivariateDistribution">
+    <xs:element name="DirichletDistribution"
+        substitutionGroup="un:AbstractContinuousMultivariateDistribution">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:DirichletDistributionType" />
+                <xs:extension base="un:DirichletDistributionType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -747,15 +769,16 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractContinuousMultivariateDistributionType">
                 <xs:sequence>
-                    <xs:element name="concentration" type="un:PositiveRealValueType" />
+                    <xs:element name="concentration" type="un:PositiveRealValueType"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-    <xs:element name="ExponentialDistribution" substitutionGroup="un:AbstractContinuousUnivariateDistribution">
+    <xs:element name="ExponentialDistribution"
+        substitutionGroup="un:AbstractContinuousUnivariateDistribution">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:ExponentialDistributionType" />
+                <xs:extension base="un:ExponentialDistributionType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -763,17 +786,20 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractContinuousUnivariateDistributionType">
                 <xs:sequence>
-                    <xs:element name="rate" type="un:PositiveRealValueType" />
-                    <xs:element name="truncationLowerInclusiveBound" type="un:PositiveRealValueType" minOccurs="0" />
-                    <xs:element name="truncationUpperInclusiveBound" type="un:PositiveRealValueType" minOccurs="0" />
+                    <xs:element name="rate" type="un:PositiveRealValueType"/>
+                    <xs:element name="truncationLowerInclusiveBound" type="un:PositiveRealValueType"
+                        minOccurs="0"/>
+                    <xs:element name="truncationUpperInclusiveBound" type="un:PositiveRealValueType"
+                        minOccurs="0"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-    <xs:element name="GammaDistribution" substitutionGroup="un:AbstractContinuousUnivariateDistribution">
+    <xs:element name="GammaDistribution"
+        substitutionGroup="un:AbstractContinuousUnivariateDistribution">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:GammaDistributionType" />
+                <xs:extension base="un:GammaDistributionType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -781,18 +807,21 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractContinuousUnivariateDistributionType">
                 <xs:sequence>
-                    <xs:element name="shape" type="un:PositiveRealValueType" />
-                    <xs:element name="scale" type="un:PositiveRealValueType" />
-                    <xs:element name="truncationLowerInclusiveBound" type="un:PositiveRealValueType" minOccurs="0" />
-                    <xs:element name="truncationUpperInclusiveBound" type="un:PositiveRealValueType" minOccurs="0" />
+                    <xs:element name="shape" type="un:PositiveRealValueType"/>
+                    <xs:element name="scale" type="un:PositiveRealValueType"/>
+                    <xs:element name="truncationLowerInclusiveBound" type="un:PositiveRealValueType"
+                        minOccurs="0"/>
+                    <xs:element name="truncationUpperInclusiveBound" type="un:PositiveRealValueType"
+                        minOccurs="0"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-    <xs:element name="InverseGammaDistribution" substitutionGroup="un:AbstractContinuousUnivariateDistribution">
+    <xs:element name="InverseGammaDistribution"
+        substitutionGroup="un:AbstractContinuousUnivariateDistribution">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:InverseGammaDistributionType" />
+                <xs:extension base="un:InverseGammaDistributionType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -800,18 +829,21 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractContinuousUnivariateDistributionType">
                 <xs:sequence>
-                    <xs:element name="shape" type="un:PositiveRealValueType" />
-                    <xs:element name="scale" type="un:PositiveRealValueType" />
-                    <xs:element name="truncationLowerInclusiveBound" type="un:PositiveRealValueType" minOccurs="0" />
-                    <xs:element name="truncationUpperInclusiveBound" type="un:PositiveRealValueType" minOccurs="0" />
+                    <xs:element name="shape" type="un:PositiveRealValueType"/>
+                    <xs:element name="scale" type="un:PositiveRealValueType"/>
+                    <xs:element name="truncationLowerInclusiveBound" type="un:PositiveRealValueType"
+                        minOccurs="0"/>
+                    <xs:element name="truncationUpperInclusiveBound" type="un:PositiveRealValueType"
+                        minOccurs="0"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-    <xs:element name="NormalInverseGammaDistribution" substitutionGroup="un:AbstractContinuousMultivariateDistribution">
+    <xs:element name="NormalInverseGammaDistribution"
+        substitutionGroup="un:AbstractContinuousMultivariateDistribution">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:NormalInverseGammaDistributionType" />
+                <xs:extension base="un:NormalInverseGammaDistributionType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -819,22 +851,27 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractContinuousMultivariateDistributionType">
                 <xs:sequence>
-                    <xs:element name="mean" type="un:ContinuousValueType" />
-                    <xs:element name="varianceScaling" type="un:PositiveRealValueType" />
-                    <xs:element name="truncationLowerInclusiveBoundN" type="un:ContinuousValueType" minOccurs="0" />
-                    <xs:element name="truncationUpperInclusiveBoundN" type="un:ContinuousValueType" minOccurs="0" />
-                    <xs:element name="shape" type="un:PositiveRealValueType" />
-                    <xs:element name="scale" type="un:PositiveRealValueType" />
-                    <xs:element name="truncationLowerInclusiveBoundIG" type="un:PositiveRealValueType" minOccurs="0" />
-                    <xs:element name="truncationUpperInclusiveBoundIG" type="un:PositiveRealValueType" minOccurs="0" />
+                    <xs:element name="mean" type="un:ContinuousValueType"/>
+                    <xs:element name="varianceScaling" type="un:PositiveRealValueType"/>
+                    <xs:element name="truncationLowerInclusiveBoundN" type="un:ContinuousValueType"
+                        minOccurs="0"/>
+                    <xs:element name="truncationUpperInclusiveBoundN" type="un:ContinuousValueType"
+                        minOccurs="0"/>
+                    <xs:element name="shape" type="un:PositiveRealValueType"/>
+                    <xs:element name="scale" type="un:PositiveRealValueType"/>
+                    <xs:element name="truncationLowerInclusiveBoundIG"
+                        type="un:PositiveRealValueType" minOccurs="0"/>
+                    <xs:element name="truncationUpperInclusiveBoundIG"
+                        type="un:PositiveRealValueType" minOccurs="0"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-    <xs:element name="PoissonDistribution" substitutionGroup="un:AbstractDiscreteUnivariateDistribution">
+    <xs:element name="PoissonDistribution"
+        substitutionGroup="un:AbstractDiscreteUnivariateDistribution">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:PoissonDistributionType" />
+                <xs:extension base="un:PoissonDistributionType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -842,17 +879,20 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractDiscreteUnivariateDistributionType">
                 <xs:sequence>
-                    <xs:element name="rate" type="un:PositiveRealValueType" />
-                    <xs:element name="truncationLowerInclusiveBound" type="un:NaturalNumberValueType" minOccurs="0" />
-                    <xs:element name="truncationUpperInclusiveBound" type="un:NaturalNumberValueType" minOccurs="0" />
+                    <xs:element name="rate" type="un:PositiveRealValueType"/>
+                    <xs:element name="truncationLowerInclusiveBound"
+                        type="un:NaturalNumberValueType" minOccurs="0"/>
+                    <xs:element name="truncationUpperInclusiveBound"
+                        type="un:NaturalNumberValueType" minOccurs="0"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-    <xs:element name="NormalDistribution" substitutionGroup="un:AbstractContinuousUnivariateDistribution">
+    <xs:element name="NormalDistribution"
+        substitutionGroup="un:AbstractContinuousUnivariateDistribution">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:NormalDistributionType" />
+                <xs:extension base="un:NormalDistributionType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -860,18 +900,24 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractContinuousUnivariateDistributionType">
                 <xs:sequence>
-                    <xs:element name="mean" type="un:ContinuousValueType" />
-                    <xs:element name="variance" type="un:PositiveRealValueType" />
-                    <xs:element name="truncationLowerInclusiveBound" type="un:ContinuousValueType" minOccurs="0" />
-                    <xs:element name="truncationUpperInclusiveBound" type="un:ContinuousValueType" minOccurs="0" />
+                    <xs:element name="mean" type="un:ContinuousValueType"/>
+                    <xs:choice>
+                        <xs:element name="variance" type="un:PositiveRealValueType"/>
+                        <xs:element name="stddev" type="un:PositiveRealValueType"/>
+                    </xs:choice>
+                    <xs:element name="truncationLowerInclusiveBound" type="un:ContinuousValueType"
+                        minOccurs="0"/>
+                    <xs:element name="truncationUpperInclusiveBound" type="un:ContinuousValueType"
+                        minOccurs="0"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-    <xs:element name="DiracDeltaDistribution" substitutionGroup="un:AbstractContinuousUnivariateDistribution">
+    <xs:element name="DiracDeltaDistribution"
+        substitutionGroup="un:AbstractContinuousUnivariateDistribution">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:DiracDeltaDistributionType" />
+                <xs:extension base="un:DiracDeltaDistributionType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -879,15 +925,16 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractContinuousUnivariateDistributionType">
                 <xs:sequence>
-                    <xs:element name="location" type="un:ContinuousValueType" />
+                    <xs:element name="location" type="un:ContinuousValueType"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-    <xs:element name="BinomialDistribution" substitutionGroup="un:AbstractDiscreteUnivariateDistribution">
+    <xs:element name="BinomialDistribution"
+        substitutionGroup="un:AbstractDiscreteUnivariateDistribution">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:BinomialDistributionType" />
+                <xs:extension base="un:BinomialDistributionType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -895,18 +942,21 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractDiscreteUnivariateDistributionType">
                 <xs:sequence>
-                    <xs:element name="numberOfTrials" type="un:NaturalNumberValueType" />
-                    <xs:element name="probabilityOfSuccess" type="un:ProbabilityValueType" />
-                    <xs:element name="truncationLowerInclusiveBound" type="un:NaturalNumberValueType" minOccurs="0" />
-                    <xs:element name="truncationUpperInclusiveBound" type="un:NaturalNumberValueType" minOccurs="0" />
+                    <xs:element name="numberOfTrials" type="un:NaturalNumberValueType"/>
+                    <xs:element name="probabilityOfSuccess" type="un:ProbabilityValueType"/>
+                    <xs:element name="truncationLowerInclusiveBound"
+                        type="un:NaturalNumberValueType" minOccurs="0"/>
+                    <xs:element name="truncationUpperInclusiveBound"
+                        type="un:NaturalNumberValueType" minOccurs="0"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-    <xs:element name="MultinomialDistribution" substitutionGroup="un:AbstractDiscreteMultivariateDistribution">
+    <xs:element name="MultinomialDistribution"
+        substitutionGroup="un:AbstractDiscreteMultivariateDistribution">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:MultinomialDistributionType" />
+                <xs:extension base="un:MultinomialDistributionType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -914,16 +964,17 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractDiscreteMultivariateDistributionType">
                 <xs:sequence>
-                    <xs:element name="numberOfTrials" type="un:NaturalNumberValueType" />
-                    <xs:element name="probabilities" type="un:ProbabilityValueType" />
+                    <xs:element name="numberOfTrials" type="un:NaturalNumberValueType"/>
+                    <xs:element name="probabilities" type="un:ProbabilityValueType"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-    <xs:element name="LogNormalDistribution" substitutionGroup="un:AbstractContinuousUnivariateDistribution">
+    <xs:element name="LogNormalDistribution"
+        substitutionGroup="un:AbstractContinuousUnivariateDistribution">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:LogNormalDistributionType" />
+                <xs:extension base="un:LogNormalDistributionType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -931,18 +982,21 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractContinuousUnivariateDistributionType">
                 <xs:sequence>
-                    <xs:element name="logScale" type="un:ContinuousValueType" />
-                    <xs:element name="shape" type="un:PositiveRealValueType" />
-                    <xs:element name="truncationLowerInclusiveBound" type="un:PositiveRealValueType" minOccurs="0" />
-                    <xs:element name="truncationUpperInclusiveBound" type="un:PositiveRealValueType" minOccurs="0" />
+                    <xs:element name="logScale" type="un:ContinuousValueType"/>
+                    <xs:element name="shape" type="un:PositiveRealValueType"/>
+                    <xs:element name="truncationLowerInclusiveBound" type="un:PositiveRealValueType"
+                        minOccurs="0"/>
+                    <xs:element name="truncationUpperInclusiveBound" type="un:PositiveRealValueType"
+                        minOccurs="0"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-    <xs:element name="StudentTDistribution" substitutionGroup="un:AbstractContinuousUnivariateDistribution">
+    <xs:element name="StudentTDistribution"
+        substitutionGroup="un:AbstractContinuousUnivariateDistribution">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:StudentTDistributionType" />
+                <xs:extension base="un:StudentTDistributionType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -950,19 +1004,22 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractContinuousUnivariateDistributionType">
                 <xs:sequence>
-                    <xs:element name="location" type="un:ContinuousValueType" />
-                    <xs:element name="scale" type="un:PositiveRealValueType" />
-                    <xs:element name="degreesOfFreedom" type="un:PositiveNaturalNumberValueType" />
-                    <xs:element name="truncationLowerInclusiveBound" type="un:ContinuousValueType" minOccurs="0" />
-                    <xs:element name="truncationUpperInclusiveBound" type="un:ContinuousValueType" minOccurs="0" />
+                    <xs:element name="location" type="un:ContinuousValueType"/>
+                    <xs:element name="scale" type="un:PositiveRealValueType"/>
+                    <xs:element name="degreesOfFreedom" type="un:PositiveNaturalNumberValueType"/>
+                    <xs:element name="truncationLowerInclusiveBound" type="un:ContinuousValueType"
+                        minOccurs="0"/>
+                    <xs:element name="truncationUpperInclusiveBound" type="un:ContinuousValueType"
+                        minOccurs="0"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-    <xs:element name="UniformDistribution" substitutionGroup="un:AbstractContinuousUnivariateDistribution">
+    <xs:element name="UniformDistribution"
+        substitutionGroup="un:AbstractContinuousUnivariateDistribution">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:UniformDistributionType" />
+                <xs:extension base="un:UniformDistributionType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -971,20 +1028,22 @@
             <xs:extension base="un:AbstractContinuousUnivariateDistributionType">
                 <xs:choice>
                     <xs:sequence>
-                        <xs:element name="minimum" type="un:ContinuousValueType" />
-                        <xs:element name="maximum" type="un:ContinuousValueType" />
+                        <xs:element name="minimum" type="un:ContinuousValueType"/>
+                        <xs:element name="maximum" type="un:ContinuousValueType"/>
                     </xs:sequence>
                     <xs:sequence>
-                        <xs:element name="numberOfClasses" type="un:PositiveNaturalNumberValueType" />
+                        <xs:element name="numberOfClasses" type="un:PositiveNaturalNumberValueType"
+                        />
                     </xs:sequence>
                 </xs:choice>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-    <xs:element name="DiscreteMultivariateMixtureModel" substitutionGroup="un:AbstractDiscreteMultivariateDistribution">
+    <xs:element name="DiscreteMultivariateMixtureModel"
+        substitutionGroup="un:AbstractDiscreteMultivariateDistribution">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:DiscreteMultivariateMixtureModelType" />
+                <xs:extension base="un:DiscreteMultivariateMixtureModelType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -995,19 +1054,20 @@
                     <xs:element name="component" maxOccurs="unbounded">
                         <xs:complexType>
                             <xs:sequence>
-                                <xs:element ref="un:AbstractDiscreteMultivariateDistribution" />
+                                <xs:element ref="un:AbstractDiscreteMultivariateDistribution"/>
                             </xs:sequence>
-                            <xs:attribute name="weight" type="un:prob" use="required" />
+                            <xs:attribute name="weight" type="un:prob" use="required"/>
                         </xs:complexType>
                     </xs:element>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-    <xs:element name="DiscreteUnivariateMixtureModel" substitutionGroup="un:AbstractDiscreteUnivariateDistribution">
+    <xs:element name="DiscreteUnivariateMixtureModel"
+        substitutionGroup="un:AbstractDiscreteUnivariateDistribution">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:DiscreteUnivariateMixtureModelType" />
+                <xs:extension base="un:DiscreteUnivariateMixtureModelType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -1018,21 +1078,24 @@
                     <xs:element name="component" maxOccurs="unbounded">
                         <xs:complexType>
                             <xs:sequence>
-                                <xs:element ref="un:AbstractDiscreteUnivariateDistribution" />
-                                <xs:element name="truncationLowerInclusiveBound" type="un:NaturalNumberValueType" minOccurs="0" />
-                                <xs:element name="truncationUpperInclusiveBound" type="un:NaturalNumberValueType" minOccurs="0" />
+                                <xs:element ref="un:AbstractDiscreteUnivariateDistribution"/>
+                                <xs:element name="truncationLowerInclusiveBound"
+                                    type="un:NaturalNumberValueType" minOccurs="0"/>
+                                <xs:element name="truncationUpperInclusiveBound"
+                                    type="un:NaturalNumberValueType" minOccurs="0"/>
                             </xs:sequence>
-                            <xs:attribute name="weight" type="un:prob" use="required" />
+                            <xs:attribute name="weight" type="un:prob" use="required"/>
                         </xs:complexType>
                     </xs:element>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-    <xs:element name="CategoricalUnivariateMixtureModel" substitutionGroup="un:AbstractCategoricalUnivariateDistribution">
+    <xs:element name="CategoricalUnivariateMixtureModel"
+        substitutionGroup="un:AbstractCategoricalUnivariateDistribution">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:CategoricalUnivariateMixtureModelType" />
+                <xs:extension base="un:CategoricalUnivariateMixtureModelType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -1043,19 +1106,20 @@
                     <xs:element name="component" maxOccurs="unbounded">
                         <xs:complexType>
                             <xs:sequence>
-                                <xs:element ref="un:AbstractCategoricalUnivariateDistribution" />
+                                <xs:element ref="un:AbstractCategoricalUnivariateDistribution"/>
                             </xs:sequence>
-                            <xs:attribute name="weight" type="un:prob" use="required" />
+                            <xs:attribute name="weight" type="un:prob" use="required"/>
                         </xs:complexType>
                     </xs:element>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-    <xs:element name="CategoricalMultivariateMixtureModel" substitutionGroup="un:AbstractCategoricalMultivariateDistribution">
+    <xs:element name="CategoricalMultivariateMixtureModel"
+        substitutionGroup="un:AbstractCategoricalMultivariateDistribution">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:CategoricalMultivariateMixtureModelType" />
+                <xs:extension base="un:CategoricalMultivariateMixtureModelType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -1066,19 +1130,20 @@
                     <xs:element name="component" maxOccurs="unbounded">
                         <xs:complexType>
                             <xs:sequence>
-                                <xs:element ref="un:AbstractCategoricalMultivariateDistribution" />
+                                <xs:element ref="un:AbstractCategoricalMultivariateDistribution"/>
                             </xs:sequence>
-                            <xs:attribute name="weight" type="un:prob" use="required" />
+                            <xs:attribute name="weight" type="un:prob" use="required"/>
                         </xs:complexType>
                     </xs:element>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-    <xs:element name="ContinuousMultivariateMixtureModel" substitutionGroup="un:AbstractContinuousMultivariateDistribution">
+    <xs:element name="ContinuousMultivariateMixtureModel"
+        substitutionGroup="un:AbstractContinuousMultivariateDistribution">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:ContinuousMultivariateMixtureModelType" />
+                <xs:extension base="un:ContinuousMultivariateMixtureModelType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -1089,19 +1154,20 @@
                     <xs:element name="component" maxOccurs="unbounded">
                         <xs:complexType>
                             <xs:sequence>
-                                <xs:element ref="un:AbstractContinuousMultivariateDistribution" />
+                                <xs:element ref="un:AbstractContinuousMultivariateDistribution"/>
                             </xs:sequence>
-                            <xs:attribute name="weight" type="un:prob" use="required" />
+                            <xs:attribute name="weight" type="un:prob" use="required"/>
                         </xs:complexType>
                     </xs:element>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-    <xs:element name="ContinuousUnivariateMixtureModel" substitutionGroup="un:AbstractContinuousUnivariateDistribution">
+    <xs:element name="ContinuousUnivariateMixtureModel"
+        substitutionGroup="un:AbstractContinuousUnivariateDistribution">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:ContinuousUnivariateMixtureModelType" />
+                <xs:extension base="un:ContinuousUnivariateMixtureModelType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -1112,11 +1178,13 @@
                     <xs:element name="component" maxOccurs="unbounded">
                         <xs:complexType>
                             <xs:sequence>
-                                <xs:element ref="un:AbstractContinuousUnivariateDistribution" />
-                                <xs:element name="truncationLowerInclusiveBound" type="un:ContinuousValueType" minOccurs="0" />
-                                <xs:element name="truncationUpperInclusiveBound" type="un:ContinuousValueType" minOccurs="0" />
+                                <xs:element ref="un:AbstractContinuousUnivariateDistribution"/>
+                                <xs:element name="truncationLowerInclusiveBound"
+                                    type="un:ContinuousValueType" minOccurs="0"/>
+                                <xs:element name="truncationUpperInclusiveBound"
+                                    type="un:ContinuousValueType" minOccurs="0"/>
                             </xs:sequence>
-                            <xs:attribute name="weight" type="un:prob" use="required" />
+                            <xs:attribute name="weight" type="un:prob" use="required"/>
                         </xs:complexType>
                     </xs:element>
                 </xs:sequence>
@@ -1124,10 +1192,11 @@
         </xs:complexContent>
     </xs:complexType>
     <!--...................................................................-->
-    <xs:element name="MultivariateNormalDistribution" substitutionGroup="un:AbstractContinuousMultivariateDistribution">
+    <xs:element name="MultivariateNormalDistribution"
+        substitutionGroup="un:AbstractContinuousMultivariateDistribution">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:MultivariateNormalDistributionType" />
+                <xs:extension base="un:MultivariateNormalDistributionType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -1135,16 +1204,17 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractContinuousMultivariateDistributionType">
                 <xs:sequence>
-                    <xs:element name="mean" type="un:ContinuousValueType" />
-                    <xs:element name="covarianceMatrix" type="un:CovarianceMatrixType" />
+                    <xs:element name="mean" type="un:ContinuousValueType"/>
+                    <xs:element name="covarianceMatrix" type="un:CovarianceMatrixType"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-    <xs:element name="MultivariateStudentTDistribution" substitutionGroup="un:AbstractContinuousMultivariateDistribution">
+    <xs:element name="MultivariateStudentTDistribution"
+        substitutionGroup="un:AbstractContinuousMultivariateDistribution">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:MultivariateStudentTDistributionType" />
+                <xs:extension base="un:MultivariateStudentTDistributionType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -1152,9 +1222,9 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractContinuousMultivariateDistributionType">
                 <xs:sequence>
-                    <xs:element name="mean" type="un:ContinuousValueType" />
-                    <xs:element name="covarianceMatrix" type="un:CovarianceMatrixType" />
-                    <xs:element name="degreesOfFreedom" type="un:PositiveNaturalNumberValueType" />
+                    <xs:element name="mean" type="un:ContinuousValueType"/>
+                    <xs:element name="covarianceMatrix" type="un:CovarianceMatrixType"/>
+                    <xs:element name="degreesOfFreedom" type="un:PositiveNaturalNumberValueType"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
@@ -1179,10 +1249,11 @@
 	</xs:complexType>
 -->
     <!--==== UncertML+ Distributions ====-->
-    <xs:element name="BetaDistribution" substitutionGroup="un:AbstractContinuousUnivariateDistribution">
+    <xs:element name="BetaDistribution"
+        substitutionGroup="un:AbstractContinuousUnivariateDistribution">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:BetaDistributionType" />
+                <xs:extension base="un:BetaDistributionType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -1190,18 +1261,21 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractContinuousUnivariateDistributionType">
                 <xs:sequence>
-                    <xs:element name="alpha" type="un:PositiveRealValueType" />
-                    <xs:element name="beta" type="un:PositiveRealValueType" />
-                    <xs:element name="truncationLowerInclusiveBound" type="un:ProbabilityValueType" minOccurs="0" />
-                    <xs:element name="truncationUpperInclusiveBound" type="un:ProbabilityValueType" minOccurs="0" />
+                    <xs:element name="alpha" type="un:PositiveRealValueType"/>
+                    <xs:element name="beta" type="un:PositiveRealValueType"/>
+                    <xs:element name="truncationLowerInclusiveBound" type="un:ProbabilityValueType"
+                        minOccurs="0"/>
+                    <xs:element name="truncationUpperInclusiveBound" type="un:ProbabilityValueType"
+                        minOccurs="0"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-    <xs:element name="LaplaceDistribution" substitutionGroup="un:AbstractContinuousUnivariateDistribution">
+    <xs:element name="LaplaceDistribution"
+        substitutionGroup="un:AbstractContinuousUnivariateDistribution">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:LaplaceDistributionType" />
+                <xs:extension base="un:LaplaceDistributionType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -1209,18 +1283,21 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractContinuousUnivariateDistributionType">
                 <xs:sequence>
-                    <xs:element name="location" type="un:ContinuousValueType" />
-                    <xs:element name="scale" type="un:PositiveRealValueType" />
-                    <xs:element name="truncationLowerInclusiveBound" type="un:ContinuousValueType" minOccurs="0" />
-                    <xs:element name="truncationUpperInclusiveBound" type="un:ContinuousValueType" minOccurs="0" />
+                    <xs:element name="location" type="un:ContinuousValueType"/>
+                    <xs:element name="scale" type="un:PositiveRealValueType"/>
+                    <xs:element name="truncationLowerInclusiveBound" type="un:ContinuousValueType"
+                        minOccurs="0"/>
+                    <xs:element name="truncationUpperInclusiveBound" type="un:ContinuousValueType"
+                        minOccurs="0"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-    <xs:element name="CauchyDistribution" substitutionGroup="un:AbstractContinuousUnivariateDistribution">
+    <xs:element name="CauchyDistribution"
+        substitutionGroup="un:AbstractContinuousUnivariateDistribution">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:CauchyDistributionType" />
+                <xs:extension base="un:CauchyDistributionType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -1228,18 +1305,21 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractContinuousUnivariateDistributionType">
                 <xs:sequence>
-                    <xs:element name="location" type="un:ContinuousValueType" />
-                    <xs:element name="scale" type="un:PositiveRealValueType" />
-                    <xs:element name="truncationLowerInclusiveBound" type="un:ContinuousValueType" minOccurs="0" />
-                    <xs:element name="truncationUpperInclusiveBound" type="un:ContinuousValueType" minOccurs="0" />
+                    <xs:element name="location" type="un:ContinuousValueType"/>
+                    <xs:element name="scale" type="un:PositiveRealValueType"/>
+                    <xs:element name="truncationLowerInclusiveBound" type="un:ContinuousValueType"
+                        minOccurs="0"/>
+                    <xs:element name="truncationUpperInclusiveBound" type="un:ContinuousValueType"
+                        minOccurs="0"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-    <xs:element name="WeibullDistribution" substitutionGroup="un:AbstractContinuousUnivariateDistribution">
+    <xs:element name="WeibullDistribution"
+        substitutionGroup="un:AbstractContinuousUnivariateDistribution">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:WeibullDistributionType" />
+                <xs:extension base="un:WeibullDistributionType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -1247,18 +1327,21 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractContinuousUnivariateDistributionType">
                 <xs:sequence>
-                    <xs:element name="scale" type="un:PositiveRealValueType" />
-                    <xs:element name="shape" type="un:PositiveRealValueType" />
-                    <xs:element name="truncationLowerInclusiveBound" type="un:PositiveRealValueType" minOccurs="0" />
-                    <xs:element name="truncationUpperInclusiveBound" type="un:PositiveRealValueType" minOccurs="0" />
+                    <xs:element name="scale" type="un:PositiveRealValueType"/>
+                    <xs:element name="shape" type="un:PositiveRealValueType"/>
+                    <xs:element name="truncationLowerInclusiveBound" type="un:PositiveRealValueType"
+                        minOccurs="0"/>
+                    <xs:element name="truncationUpperInclusiveBound" type="un:PositiveRealValueType"
+                        minOccurs="0"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-    <xs:element name="LogisticDistribution" substitutionGroup="un:AbstractContinuousUnivariateDistribution">
+    <xs:element name="LogisticDistribution"
+        substitutionGroup="un:AbstractContinuousUnivariateDistribution">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:LogisticDistributionType" />
+                <xs:extension base="un:LogisticDistributionType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -1266,18 +1349,21 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractContinuousUnivariateDistributionType">
                 <xs:sequence>
-                    <xs:element name="location" type="un:ContinuousValueType" />
-                    <xs:element name="scale" type="un:PositiveRealValueType" />
-                    <xs:element name="truncationLowerInclusiveBound" type="un:ContinuousValueType" minOccurs="0" />
-                    <xs:element name="truncationUpperInclusiveBound" type="un:ContinuousValueType" minOccurs="0" />
+                    <xs:element name="location" type="un:ContinuousValueType"/>
+                    <xs:element name="scale" type="un:PositiveRealValueType"/>
+                    <xs:element name="truncationLowerInclusiveBound" type="un:ContinuousValueType"
+                        minOccurs="0"/>
+                    <xs:element name="truncationUpperInclusiveBound" type="un:ContinuousValueType"
+                        minOccurs="0"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-    <xs:element name="ChiSquareDistribution" substitutionGroup="un:AbstractContinuousUnivariateDistribution">
+    <xs:element name="ChiSquareDistribution"
+        substitutionGroup="un:AbstractContinuousUnivariateDistribution">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:ChiSquareDistributionType" />
+                <xs:extension base="un:ChiSquareDistributionType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -1285,17 +1371,20 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractContinuousUnivariateDistributionType">
                 <xs:sequence>
-                    <xs:element name="degreesOfFreedom" type="un:PositiveNaturalNumberValueType" />
-                    <xs:element name="truncationLowerInclusiveBoundIG" type="un:PositiveRealValueType" minOccurs="0" />
-                    <xs:element name="truncationUpperInclusiveBoundIG" type="un:PositiveRealValueType" minOccurs="0" />
+                    <xs:element name="degreesOfFreedom" type="un:PositiveNaturalNumberValueType"/>
+                    <xs:element name="truncationLowerInclusiveBoundIG"
+                        type="un:PositiveRealValueType" minOccurs="0"/>
+                    <xs:element name="truncationUpperInclusiveBoundIG"
+                        type="un:PositiveRealValueType" minOccurs="0"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-    <xs:element name="GeometricDistribution" substitutionGroup="un:AbstractDiscreteUnivariateDistribution">
+    <xs:element name="GeometricDistribution"
+        substitutionGroup="un:AbstractDiscreteUnivariateDistribution">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:GeometricDistributionType" />
+                <xs:extension base="un:GeometricDistributionType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -1303,17 +1392,20 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractDiscreteUnivariateDistributionType">
                 <xs:sequence>
-                    <xs:element name="probability" type="un:ProbabilityValueType" />
-                    <xs:element name="truncationLowerInclusiveBound" type="un:NaturalNumberValueType" minOccurs="0" />
-                    <xs:element name="truncationUpperInclusiveBound" type="un:NaturalNumberValueType" minOccurs="0" />
+                    <xs:element name="probability" type="un:ProbabilityValueType"/>
+                    <xs:element name="truncationLowerInclusiveBound"
+                        type="un:NaturalNumberValueType" minOccurs="0"/>
+                    <xs:element name="truncationUpperInclusiveBound"
+                        type="un:NaturalNumberValueType" minOccurs="0"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-    <xs:element name="HypergeometricDistribution" substitutionGroup="un:AbstractDiscreteUnivariateDistribution">
+    <xs:element name="HypergeometricDistribution"
+        substitutionGroup="un:AbstractDiscreteUnivariateDistribution">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:HypergeometricDistributionType" />
+                <xs:extension base="un:HypergeometricDistributionType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -1321,11 +1413,13 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractDiscreteUnivariateDistributionType">
                 <xs:sequence>
-                    <xs:element name="numberOfSuccesses" type="un:NaturalNumberValueType" />
-                    <xs:element name="numberOfTrials" type="un:NaturalNumberValueType" />
-                    <xs:element name="populationSize" type="un:NaturalNumberValueType" />
-                    <xs:element name="truncationLowerInclusiveBound" type="un:NaturalNumberValueType" minOccurs="0" />
-                    <xs:element name="truncationUpperInclusiveBound" type="un:NaturalNumberValueType" minOccurs="0" />
+                    <xs:element name="numberOfSuccesses" type="un:NaturalNumberValueType"/>
+                    <xs:element name="numberOfTrials" type="un:NaturalNumberValueType"/>
+                    <xs:element name="populationSize" type="un:NaturalNumberValueType"/>
+                    <xs:element name="truncationLowerInclusiveBound"
+                        type="un:NaturalNumberValueType" minOccurs="0"/>
+                    <xs:element name="truncationUpperInclusiveBound"
+                        type="un:NaturalNumberValueType" minOccurs="0"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
@@ -1333,7 +1427,7 @@
     <xs:element name="FDistribution" substitutionGroup="un:AbstractContinuousUnivariateDistribution">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:FDistributionType" />
+                <xs:extension base="un:FDistributionType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -1341,18 +1435,21 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractContinuousUnivariateDistributionType">
                 <xs:sequence>
-                    <xs:element name="denominator" type="un:NaturalNumberValueType" />
-                    <xs:element name="numerator" type="un:NaturalNumberValueType" />
-                    <xs:element name="truncationLowerInclusiveBoundIG" type="un:PositiveRealValueType" minOccurs="0" />
-                    <xs:element name="truncationUpperInclusiveBoundIG" type="un:PositiveRealValueType" minOccurs="0" />
+                    <xs:element name="denominator" type="un:NaturalNumberValueType"/>
+                    <xs:element name="numerator" type="un:NaturalNumberValueType"/>
+                    <xs:element name="truncationLowerInclusiveBoundIG"
+                        type="un:PositiveRealValueType" minOccurs="0"/>
+                    <xs:element name="truncationUpperInclusiveBoundIG"
+                        type="un:PositiveRealValueType" minOccurs="0"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-    <xs:element name="NegativeBinomialDistribution" substitutionGroup="un:AbstractDiscreteUnivariateDistribution">
+    <xs:element name="NegativeBinomialDistribution"
+        substitutionGroup="un:AbstractDiscreteUnivariateDistribution">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:NegativeBinomialDistributionType" />
+                <xs:extension base="un:NegativeBinomialDistributionType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -1360,18 +1457,21 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractDiscreteUnivariateDistributionType">
                 <xs:sequence>
-                    <xs:element name="numberOfFailures" type="un:NaturalNumberValueType" />
-                    <xs:element name="probability" type="un:ProbabilityValueType" />
-                    <xs:element name="truncationLowerInclusiveBound" type="un:NaturalNumberValueType" minOccurs="0" />
-                    <xs:element name="truncationUpperInclusiveBound" type="un:NaturalNumberValueType" minOccurs="0" />
+                    <xs:element name="numberOfFailures" type="un:NaturalNumberValueType"/>
+                    <xs:element name="probability" type="un:ProbabilityValueType"/>
+                    <xs:element name="truncationLowerInclusiveBound"
+                        type="un:NaturalNumberValueType" minOccurs="0"/>
+                    <xs:element name="truncationUpperInclusiveBound"
+                        type="un:NaturalNumberValueType" minOccurs="0"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-    <xs:element name="ParetoDistribution" substitutionGroup="un:AbstractContinuousUnivariateDistribution">
+    <xs:element name="ParetoDistribution"
+        substitutionGroup="un:AbstractContinuousUnivariateDistribution">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:ParetoDistributionType" />
+                <xs:extension base="un:ParetoDistributionType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -1379,18 +1479,21 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractContinuousUnivariateDistributionType">
                 <xs:sequence>
-                    <xs:element name="scale" type="un:PositiveRealValueType" />
-                    <xs:element name="shape" type="un:PositiveRealValueType" />
-                    <xs:element name="truncationLowerInclusiveBound" type="un:ContinuousValueType" minOccurs="0" />
-                    <xs:element name="truncationUpperInclusiveBound" type="un:ContinuousValueType" minOccurs="0" />
+                    <xs:element name="scale" type="un:PositiveRealValueType"/>
+                    <xs:element name="shape" type="un:PositiveRealValueType"/>
+                    <xs:element name="truncationLowerInclusiveBound" type="un:ContinuousValueType"
+                        minOccurs="0"/>
+                    <xs:element name="truncationUpperInclusiveBound" type="un:ContinuousValueType"
+                        minOccurs="0"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-    <xs:element name="WishartDistribution" substitutionGroup="un:AbstractDiscreteMultivariateDistribution">
+    <xs:element name="WishartDistribution"
+        substitutionGroup="un:AbstractDiscreteMultivariateDistribution">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:WishartDistributionType" />
+                <xs:extension base="un:WishartDistributionType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -1398,16 +1501,17 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractDiscreteMultivariateDistributionType">
                 <xs:sequence>
-                    <xs:element name="degreesOfFreedom" type="un:positiveRealNumber" />
-                    <xs:element name="scaleMatrix" type="un:CovarianceMatrixType" />
+                    <xs:element name="degreesOfFreedom" type="un:positiveRealNumber"/>
+                    <xs:element name="scaleMatrix" type="un:CovarianceMatrixType"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-    <xs:element name="BernoulliDistribution" substitutionGroup="un:AbstractCategoricalUnivariateDistribution">
+    <xs:element name="BernoulliDistribution"
+        substitutionGroup="un:AbstractCategoricalUnivariateDistribution">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:BernoulliDistributionType" />
+                <xs:extension base="un:BernoulliDistributionType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -1415,15 +1519,17 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractCategoricalUnivariateDistributionType">
                 <xs:sequence>
-                    <xs:element name="categoryProb" type="un:CategoricalProbabilityValueType" minOccurs="1" maxOccurs="unbounded" />
+                    <xs:element name="categoryProb" type="un:CategoricalProbabilityValueType"
+                        minOccurs="1" maxOccurs="unbounded"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-    <xs:element name="CategoricalDistribution" substitutionGroup="un:AbstractCategoricalMultivariateDistribution">
+    <xs:element name="CategoricalDistribution"
+        substitutionGroup="un:AbstractCategoricalMultivariateDistribution">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:CategoricalDistributionType" />
+                <xs:extension base="un:CategoricalDistributionType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -1431,7 +1537,8 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractCategoricalMultivariateDistributionType">
                 <xs:sequence>
-                    <xs:element name="categoryProb" type="un:CategoricalProbabilityValueType" minOccurs="1" maxOccurs="unbounded" />
+                    <xs:element name="categoryProb" type="un:CategoricalProbabilityValueType"
+                        minOccurs="1" maxOccurs="unbounded"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
@@ -1440,7 +1547,7 @@
     <xs:element name="RandomSample" substitutionGroup="un:AbstractSample">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:RandomSampleType" />
+                <xs:extension base="un:RandomSampleType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -1448,7 +1555,7 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractSampleType">
                 <xs:sequence>
-                    <xs:element ref="un:Realisation" maxOccurs="unbounded" />
+                    <xs:element ref="un:Realisation" maxOccurs="unbounded"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
@@ -1456,7 +1563,7 @@
     <xs:element name="SystematicSample" substitutionGroup="un:AbstractSample">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:SystematicSampleType" />
+                <xs:extension base="un:SystematicSampleType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -1464,7 +1571,7 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractSampleType">
                 <xs:sequence>
-                    <xs:element ref="un:Realisation" maxOccurs="unbounded" />
+                    <xs:element ref="un:Realisation" maxOccurs="unbounded"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
@@ -1472,7 +1579,7 @@
     <xs:element name="UnknownSample" substitutionGroup="un:AbstractSample">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:UnknownSampleType" />
+                <xs:extension base="un:UnknownSampleType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -1480,7 +1587,7 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractSampleType">
                 <xs:sequence>
-                    <xs:element ref="un:Realisation" maxOccurs="unbounded" />
+                    <xs:element ref="un:Realisation" maxOccurs="unbounded"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
@@ -1488,7 +1595,7 @@
     <xs:element name="Realisation" substitutionGroup="un:AbstractUncertainty">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="un:RealisationType" />
+                <xs:extension base="un:RealisationType"/>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -1496,13 +1603,13 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractUncertaintyType">
                 <xs:sequence>
-                    <xs:element name="weight" type="un:double" />
+                    <xs:element name="weight" type="un:double"/>
                     <xs:choice>
-                        <xs:element name="value" type="un:ContinuousValueType" />
-                        <xs:element name="category" type="un:CategoricalValueType" />
+                        <xs:element name="value" type="un:ContinuousValueType"/>
+                        <xs:element name="category" type="un:CategoricalValueType"/>
                     </xs:choice>
                 </xs:sequence>
-                <xs:attribute name="id" type="xs:ID" />
+                <xs:attribute name="id" type="xs:ID"/>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
