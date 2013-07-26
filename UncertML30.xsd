@@ -1613,4 +1613,10 @@
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
+    <xs:complexType name="UncertMLType">
+        <xs:sequence>
+            <xs:element ref="un:AbstractUncertainty"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="UncertML" type="un:UncertMLType"/>
 </xs:schema>
