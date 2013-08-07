@@ -95,12 +95,14 @@
         <!--xs:attribute name="symbol" use="required"/-->
         <xs:attribute name="varId" type="un:symbolType" use="required"/>
     </xs:complexType>
-    <xs:element name="var" type="un:varRefType"/>
+
+    <xs:element name="var" type="un:varRefType" />
 
     <xs:complexType name="arrayVarRefType">
         <xs:attribute name="varId" type="un:symbolType" use="required"/>
     </xs:complexType>
-    <xs:element name="arrayVar" type="un:arrayVarRefType"/>
+
+    <xs:element name="arrayVar" type="un:arrayVarRefType" />
 
     <xs:complexType name="KurtosisValueType">
         <xs:complexContent>
@@ -180,8 +182,19 @@
         <xs:choice>
             <xs:sequence minOccurs="1" maxOccurs="unbounded">
                 <xs:choice>
-                    <xs:element name="rVal" type="un:natNum"/>
-                    <xs:element ref="un:var"/>
+                    <xs:element name="nVal" type="un:natNum" />
+                    <xs:element ref="un:var" />
+                </xs:choice>
+            </xs:sequence>
+            <xs:element ref="un:arrayVar" />
+        </xs:choice>
+    </xs:complexType>
+    <xs:complexType name="PositiveRealArrayValueType">
+        <xs:choice>
+            <xs:sequence minOccurs="1" maxOccurs="unbounded">
+                <xs:choice>
+                    <xs:element name="rVal" type="un:posReal" />
+                    <xs:element ref="un:var" />
                 </xs:choice>
             </xs:sequence>
             <xs:element ref="un:arrayVar"/>
@@ -348,8 +361,8 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractSummaryStatisticType">
                 <xs:choice>
-                    <xs:element name="value" type="un:ContinuousValueType"/>
-                    <xs:element name="categories" type="un:CategoricalValueType"/>
+                    <xs:element name="value" type="un:ContinuousValueType" />
+                    <xs:element name="category" type="un:CategoricalValueType" />
                 </xs:choice>
             </xs:extension>
         </xs:complexContent>
@@ -365,7 +378,11 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractSummaryStatisticType">
                 <xs:sequence>
-                    <xs:element name="value" type="un:ContinuousValueType"/>
+                    <xs:choice>
+                        <xs:element name="value" type="un:ContinuousValueType" />
+                        <xs:element name="category" type="un:CategoricalValueType" />
+                    </xs:choice>
+
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
@@ -442,7 +459,9 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractSummaryStatisticType">
                 <xs:sequence>
-                    <xs:element name="value" type="un:ContinuousValueType"/>
+
+                    <xs:element name="value" type="un:PositiveRealValueType" />
+
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
@@ -665,9 +684,9 @@
                 </xs:sequence>
                 <xs:attribute name="level" use="required">
                     <xs:simpleType>
-                        <xs:restriction base="xs:int">
-                            <xs:minInclusive value="0"/>
-                            <xs:maxInclusive value="100"/>
+                        <xs:restriction base="xs:double">
+                            <xs:minInclusive value="0.0" />
+                            <xs:maxInclusive value="100.0" />
                         </xs:restriction>
                     </xs:simpleType>
                 </xs:attribute>
@@ -1204,8 +1223,9 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractContinuousMultivariateDistributionType">
                 <xs:sequence>
-                    <xs:element name="mean" type="un:ContinuousValueType"/>
-                    <xs:element name="covarianceMatrix" type="un:CovarianceMatrixType"/>
+                    <xs:element name="mean" type="un:PositiveRealArrayValueType" />
+                    <!-- TODO check correct, check if it should be 'means' - allow choice of external reference again -->
+                    <xs:element name="covarianceMatrix" type="un:CovarianceMatrixType" />
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
@@ -1222,9 +1242,10 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractContinuousMultivariateDistributionType">
                 <xs:sequence>
-                    <xs:element name="mean" type="un:ContinuousValueType"/>
-                    <xs:element name="covarianceMatrix" type="un:CovarianceMatrixType"/>
-                    <xs:element name="degreesOfFreedom" type="un:PositiveNaturalNumberValueType"/>
+                    <xs:element name="mean" type="un:PositiveRealArrayValueType" />
+                    <!-- TODO check correct, check if it should be 'means' - allow choice of external reference again -->
+                    <xs:element name="covarianceMatrix" type="un:CovarianceMatrixType" />
+                    <xs:element name="degreesOfFreedom" type="un:PositiveNaturalNumberValueType" />
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
@@ -1603,10 +1624,10 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractUncertaintyType">
                 <xs:sequence>
-                    <xs:element name="weight" type="un:double"/>
-                    <xs:choice>
-                        <xs:element name="value" type="un:ContinuousValueType"/>
-                        <xs:element name="category" type="un:CategoricalValueType"/>
+                    <xs:element name="weight" type="un:double" />
+                    <xs:choice maxOccurs="unbounded">
+                        <xs:element name="value" type="un:ContinuousValueType" />
+                        <xs:element name="category" type="un:CategoricalValueType" />
                     </xs:choice>
                 </xs:sequence>
                 <xs:attribute name="id" type="xs:ID"/>

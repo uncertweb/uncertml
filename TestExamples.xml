@@ -75,6 +75,19 @@
    <un:var varId="var"/>
   </un:variance>
  </un:NormalDistribution>
+    
+<!-- invalid but more concise
+<un:NormalDistribution definition="http://www.uncertml.org/distributions/normal">
+  <un:mean varId="as"/>
+  <un:variance varId="var"/>
+ </un:NormalDistribution>
+    
+ <un:NormalDistribution definition="http://www.uncertml.org/distributions/normal">
+  <un:mean>3.0</un:mean>
+  <un:variance>4.0</un:variance>
+ </un:NormalDistribution>
+    -->
+    
  <un:DiscreteProbability  definition="http://www.uncertml.org/statistics/discrete-probability">
     <un:categoryProb definition="We need this">
         <un:name>red</un:name>
@@ -106,7 +119,7 @@
  </un:MultivariateNormalDistribution>
  <un:Realisation definition="http://www.uncertml.org/samples/realisation">
   <un:weight><un:var varId="w1"/></un:weight>
-  <un:value><un:rVal>6.28</un:rVal></un:value>
+  <un:value><un:rVal>6.28</un:rVal></un:value><un:value><un:rVal>6.28</un:rVal></un:value><un:value><un:rVal>6.28</un:rVal></un:value>
  </un:Realisation>
     <un:Realisation definition="http://www.uncertml.org/samples/realisation">
   <un:weight><un:var varId="w2"/></un:weight>
@@ -179,15 +192,15 @@
    <un:sVal>Red</un:sVal><un:sVal>Green</un:sVal><un:sVal>Blue</un:sVal>
   </un:targetCategories>
   <un:counts>
-    <un:rVal>1</un:rVal>
-     <un:rVal>2</un:rVal>
-     <un:rVal>3</un:rVal>
-     <un:rVal>4</un:rVal>
-     <un:rVal>5</un:rVal>
-     <un:rVal>6</un:rVal>
-     <un:rVal>5</un:rVal>
-     <un:rVal>4</un:rVal>
-     <un:rVal>3</un:rVal>
+    <un:nVal>1</un:nVal>
+     <un:nVal>2</un:nVal>
+     <un:nVal>3</un:nVal>
+     <un:nVal>4</un:nVal>
+     <un:nVal>5</un:nVal>
+     <un:nVal>6</un:nVal>
+     <un:nVal>5</un:nVal>
+     <un:nVal>4</un:nVal>
+     <un:nVal>3</un:nVal>
     <!-- TODO verify that this approach is suitable - also seen in the discreteProbability -->
   </un:counts>
  </un:ConfusionMatrix> 
