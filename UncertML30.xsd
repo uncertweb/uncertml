@@ -195,15 +195,16 @@
     <xs:complexType name="PositiveRealArrayValueType">
         <xs:choice>
             <xs:sequence minOccurs="1" maxOccurs="unbounded">
-                <xs:element name="val" type="un:PositiveRealValueType" />
-                <!--<xs:choice>
+                <!--<xs:element name="val" type="un:PositiveRealValueType" />-->
+                <xs:choice>
                     <xs:element name="rVal" type="un:posReal" />
                     <xs:element ref="un:var" />
-                </xs:choice>-->
+                </xs:choice>
             </xs:sequence>
             <xs:element ref="un:arrayVar" />
         </xs:choice>
     </xs:complexType>
+    
     <xs:complexType name="RealArrayValueType">
         <xs:choice>
             <xs:sequence minOccurs="1" maxOccurs="unbounded">
@@ -216,6 +217,7 @@
             <xs:element ref="un:arrayVar" />
         </xs:choice>
     </xs:complexType>
+    
     <xs:complexType name="CategoricalArrayValueType">
         <xs:choice>
             <xs:sequence minOccurs="1" maxOccurs="unbounded">
@@ -1179,6 +1181,7 @@
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
+    
     <xs:element name="MultivariateStudentTDistribution" substitutionGroup="un:AbstractContinuousMultivariateDistribution">
         <xs:complexType>
             <xs:complexContent>
