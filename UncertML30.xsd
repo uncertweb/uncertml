@@ -181,10 +181,11 @@
     <xs:complexType name="NaturalNumberArrayValueType">
         <xs:choice>
             <xs:sequence minOccurs="1" maxOccurs="unbounded">
-                <xs:choice>
+				<xs:element name="nVal" type="un:NaturalNumberValueType" />
+                <!--<xs:choice>
                     <xs:element name="nVal" type="un:natNum" />
                     <xs:element ref="un:var" />
-                </xs:choice>
+                </xs:choice>-->
             </xs:sequence>
             <xs:element ref="un:arrayVar" />
         </xs:choice>
@@ -194,6 +195,17 @@
             <xs:sequence minOccurs="1" maxOccurs="unbounded">
                 <xs:choice>
                     <xs:element name="rVal" type="un:posReal" />
+                    <xs:element ref="un:var" />
+                </xs:choice>
+            </xs:sequence>
+            <xs:element ref="un:arrayVar"/>
+        </xs:choice>
+    </xs:complexType>
+   <xs:complexType name="RealArrayValueType">
+        <xs:choice>
+            <xs:sequence minOccurs="1" maxOccurs="unbounded">
+                <xs:choice>
+                    <xs:element name="rVal" type="un:ContinuousValueType" />
                     <xs:element ref="un:var" />
                 </xs:choice>
             </xs:sequence>
@@ -1223,7 +1235,7 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractContinuousMultivariateDistributionType">
                 <xs:sequence>
-                    <xs:element name="mean" type="un:PositiveRealArrayValueType" />
+                    <xs:element name="meanVector" type="un:RealArrayValueType" />
                     <!-- TODO check correct, check if it should be 'means' - allow choice of external reference again -->
                     <xs:element name="covarianceMatrix" type="un:CovarianceMatrixType" />
                 </xs:sequence>
@@ -1242,9 +1254,8 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractContinuousMultivariateDistributionType">
                 <xs:sequence>
-                    <xs:element name="mean" type="un:PositiveRealArrayValueType" />
-                    <!-- TODO check correct, check if it should be 'means' - allow choice of external reference again -->
-                    <xs:element name="covarianceMatrix" type="un:CovarianceMatrixType" />
+                    <xs:element name="meanVector" type="un:RealArrayValueType" />
+                     <xs:element name="covarianceMatrix" type="un:CovarianceMatrixType" />
                     <xs:element name="degreesOfFreedom" type="un:PositiveNaturalNumberValueType" />
                 </xs:sequence>
             </xs:extension>
