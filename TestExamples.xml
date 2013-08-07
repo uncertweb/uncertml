@@ -106,15 +106,15 @@
  </un:DiscreteProbability>
 
  <un:MultivariateNormalDistribution  definition="http://www.uncertml.org/distributions/multivariate-normal">
-  <un:mean><un:var varId="mu_b"/></un:mean>
+  <un:meanVector><un:arrayVar varId="mu_b"/></un:meanVector>
   <un:covarianceMatrix dimension="2" definition="">
-   <un:value><un:var varId="a"/></un:value> 
+   <un:value><un:val><un:var varId="a"/></un:val></un:value> 
   </un:covarianceMatrix>
  </un:MultivariateNormalDistribution>
 <un:MultivariateNormalDistribution  definition="http://www.uncertml.org/distributions/multivariate-normal">
-  <un:mean><un:rVal>1.2</un:rVal></un:mean>
+  <un:meanVector><un:val><un:rVal>1.2</un:rVal></un:val><un:val><un:rVal>2.2</un:rVal></un:val></un:meanVector>
   <un:covarianceMatrix dimension="2" definition="">
-   <un:value><un:rVal>23.5</un:rVal></un:value> 
+   <un:value><un:val><un:rVal>1.2</un:rVal></un:val><un:val><un:rVal>2.2</un:rVal></un:val></un:value>
   </un:covarianceMatrix>
  </un:MultivariateNormalDistribution>
  <un:Realisation definition="http://www.uncertml.org/samples/realisation">
@@ -192,15 +192,12 @@
    <un:sVal>Red</un:sVal><un:sVal>Green</un:sVal><un:sVal>Blue</un:sVal>
   </un:targetCategories>
   <un:counts>
-    <un:nVal>1</un:nVal>
-     <un:nVal>2</un:nVal>
-     <un:nVal>3</un:nVal>
-     <un:nVal>4</un:nVal>
-     <un:nVal>5</un:nVal>
-     <un:nVal>6</un:nVal>
-     <un:nVal>5</un:nVal>
-     <un:nVal>4</un:nVal>
-     <un:nVal>3</un:nVal>
+    <un:val><un:nVal>1</un:nVal></un:val>
+    <un:val><un:nVal>2</un:nVal></un:val>
+    <un:val><un:nVal>3</un:nVal></un:val>
+    <un:val><un:nVal>4</un:nVal></un:val>
+    <un:val><un:nVal>5</un:nVal></un:val>
+    <un:val><un:nVal>6</un:nVal></un:val>
     <!-- TODO verify that this approach is suitable - also seen in the discreteProbability -->
   </un:counts>
  </un:ConfusionMatrix> 
