@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <UncertML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://www.uncertml.org/Test testSchema.xsd" 
+ xsi:schemaLocation="testSchema.xsd" 
  xmlns="http://www.uncertml.org/Test"
  xmlns:un="http://www.uncertml.org/3.0">
  <un:CentredMoment order="2" definition="http://www.uncertml.org/statistics/centred-moment">
@@ -111,12 +111,25 @@
    <un:value><un:val><un:var varId="a"/></un:val></un:value> 
   </un:covarianceMatrix>
  </un:MultivariateNormalDistribution>
+
+    <!-- These examples are really ugly in my view - take the covariance matrix which has a pretty repetitive structure -->
 <un:MultivariateNormalDistribution  definition="http://www.uncertml.org/distributions/multivariate-normal">
   <un:meanVector><un:val><un:rVal>1.2</un:rVal></un:val><un:val><un:rVal>2.2</un:rVal></un:val></un:meanVector>
   <un:covarianceMatrix dimension="2" definition="">
    <un:value><un:val><un:rVal>1.2</un:rVal></un:val><un:val><un:rVal>2.2</un:rVal></un:val></un:value>
   </un:covarianceMatrix>
  </un:MultivariateNormalDistribution>
+
+<!-- Here is what I'd like to achieve ...
+    
+ <un:MultivariateNormalDistribution  definition="http://www.uncertml.org/distributions/multivariate-normal">
+  <un:meanVector><un:rVal>1.2</un:rVal><un:rVal>2.2</un:rVal></un:meanVector>
+  <un:covarianceMatrix dimension="2" definition="">
+   <un:rVal>4.2</un:rVal><un:rVal>2.2</un:rVal><un:rVal>2.2</un:rVal><un:rVal>6.12</un:rVal>
+  </un:covarianceMatrix>
+ </un:MultivariateNormalDistribution> -->
+
+    
  <un:Realisation definition="http://www.uncertml.org/samples/realisation">
   <un:weight><un:var varId="w1"/></un:weight>
   <un:value><un:rVal>6.28</un:rVal></un:value><un:value><un:rVal>6.28</un:rVal></un:value><un:value><un:rVal>6.28</un:rVal></un:value>
