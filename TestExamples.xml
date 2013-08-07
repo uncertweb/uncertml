@@ -57,11 +57,11 @@
       </un:NormalDistribution>
     </un:component>
     <un:component weight="0.34">
-      <un:DiracDeltaDistribution definition="http://en.wikipedia.org/wiki/Dirac_delta_function#As_a_distribution">
-        <un:location>
-          <un:rVal>0.0</un:rVal>
-        </un:location>
-      </un:DiracDeltaDistribution>
+        <un:DiracDeltaDistribution definition="http://en.wikipedia.org/wiki/Dirac_delta_function#As_a_distribution">
+            <un:location>
+                <un:rVal>0.0</un:rVal>
+            </un:location>
+        </un:DiracDeltaDistribution>
     </un:component>
   </un:ContinuousUnivariateMixtureModel>
   
@@ -76,6 +76,15 @@
   </un:variance>
  </un:NormalDistribution>
     
+ <un:NormalDistribution definition="http://www.uncertml.org/distributions/normal">
+  <un:mean>
+   <un:rVal>-24.1</un:rVal>
+  </un:mean>
+  <un:variance>
+   <un:prVal>34.1</un:prVal>
+  </un:variance>
+ </un:NormalDistribution>
+
 <!-- invalid but more concise
 <un:NormalDistribution definition="http://www.uncertml.org/distributions/normal">
   <un:mean varId="as"/>
