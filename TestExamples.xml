@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <UncertML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="testSchema.xsd" 
+ xsi:schemaLocation="http://www.uncertml.org/Test testSchema.xsd" 
  xmlns="http://www.uncertml.org/Test"
  xmlns:un="http://www.uncertml.org/3.0">
  <un:CentredMoment order="2" definition="http://www.uncertml.org/statistics/centred-moment">
