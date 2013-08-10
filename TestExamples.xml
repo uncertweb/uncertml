@@ -100,44 +100,44 @@
  <un:DiscreteProbability  definition="http://www.uncertml.org/statistics/discrete-probability">
     <un:categoryProb definition="We need this">
         <un:name>red</un:name>
-        <un:probability>
+        <un:prob>
             <un:pVal>0.5</un:pVal>
-  	</un:probability>
+  	    </un:prob>
 	</un:categoryProb>
  </un:DiscreteProbability>
  <un:DiscreteProbability  definition="http://www.uncertml.org/statistics/discrete-probability">
     <un:categoryProb definition="We need this">
         <un:name>green</un:name>
-        <un:probability>
-            <un:var varId="a"/>
-		</un:probability>
+        <un:prob><un:var varId="a"/></un:prob>
 	</un:categoryProb>
  </un:DiscreteProbability>
 
  <un:MultivariateNormalDistribution  definition="http://www.uncertml.org/distributions/multivariate-normal">
   <un:meanVector><un:arrayVar varId="mu_b"/></un:meanVector>
   <un:covarianceMatrix dimension="2" definition="">
-   <un:value><un:val><un:var varId="a"/></un:val></un:value> 
+   <un:values><un:var varId="a"/></un:values> 
   </un:covarianceMatrix>
  </un:MultivariateNormalDistribution>
 
-    <!-- These examples are really ugly in my view - take the covariance matrix which has a pretty repetitive structure -->
 <un:MultivariateNormalDistribution  definition="http://www.uncertml.org/distributions/multivariate-normal">
-  <un:meanVector><un:val><un:rVal>1.2</un:rVal></un:val><un:val><un:rVal>2.2</un:rVal></un:val></un:meanVector>
+  <un:meanVector><un:rVal>1.2</un:rVal><un:rVal>2.2</un:rVal></un:meanVector>
   <un:covarianceMatrix dimension="2" definition="">
-   <un:value><un:val><un:rVal>1.2</un:rVal></un:val><un:val><un:rVal>2.2</un:rVal></un:val></un:value>
+   <un:values><un:rVal>1.2</un:rVal><un:rVal>2.2</un:rVal></un:values>
   </un:covarianceMatrix>
  </un:MultivariateNormalDistribution>
 
-<!-- Here is what I'd like to achieve ...
+<!-- DC: Here is what I'd like to achieve ...
+    LB: the only difference now is that the real values (or vars) are enclosed in a 'values' element
+    This is the only way to do this while reusing the types we have, otherwise we have to 
+    extend RealArrayType (messy) or define the array again inline
     
  <un:MultivariateNormalDistribution  definition="http://www.uncertml.org/distributions/multivariate-normal">
   <un:meanVector><un:rVal>1.2</un:rVal><un:rVal>2.2</un:rVal></un:meanVector>
   <un:covarianceMatrix dimension="2" definition="">
    <un:rVal>4.2</un:rVal><un:rVal>2.2</un:rVal><un:rVal>2.2</un:rVal><un:rVal>6.12</un:rVal>
   </un:covarianceMatrix>
- </un:MultivariateNormalDistribution> -->
-
+ </un:MultivariateNormalDistribution> 
+-->
     
  <un:Realisation definition="http://www.uncertml.org/samples/realisation">
   <un:weight><un:var varId="w1"/></un:weight>
@@ -152,7 +152,7 @@
   <un:value><un:rVal>9.42</un:rVal></un:value>
  </un:Realisation>
  <un:Realisation id="abc" definition="http://www.uncertml.org/samples/realisation">
-  <un:weight><un:rVal>0.5</un:rVal></un:weight>
+  <un:weight><un:prVal>0.5</un:prVal></un:weight>
   <un:category><un:sVal>Blue</un:sVal></un:category>
  </un:Realisation>
  <un:Realisation id="abc2" definition="http://www.uncertml.org/samples/realisation">
@@ -185,21 +185,21 @@
   <un:RandomSample definition="http://www.uncertml.org/samples/random">
    <un:samplingMethodDescription>Sampling Method</un:samplingMethodDescription>
    <un:Realisation definition="http://www.uncertml.org/samples/realisation">
-    <un:weight><un:rVal>0.5</un:rVal></un:weight>
+    <un:weight><un:prVal>0.5</un:prVal></un:weight>
     <un:value><un:rVal>3.14</un:rVal></un:value>
    </un:Realisation>
    <un:Realisation definition="http://www.uncertml.org/samples/realisation">
-    <un:weight><un:rVal>0.5</un:rVal></un:weight>
+    <un:weight><un:prVal>0.5</un:prVal></un:weight>
     <un:value><un:var varId="as"/></un:value>
    </un:Realisation>
   </un:RandomSample>
   <un:RandomSample definition="http://www.uncertml.org/samples/random">
    <un:Realisation id="foo" definition="http://www.uncertml.org/samples/realisation">
-    <un:weight><un:rVal>1.0</un:rVal></un:weight>
+    <un:weight><un:prVal>1.0</un:prVal></un:weight>
     <un:value><un:rVal>236</un:rVal></un:value>
    </un:Realisation>
     <un:Realisation id="foo2" definition="http://www.uncertml.org/samples/realisation">
-    <un:weight><un:rVal>1.0</un:rVal></un:weight>
+    <un:weight><un:prVal>1.0</un:prVal></un:weight>
     <un:value><un:var varId="asa"/></un:value>
    </un:Realisation>
   </un:RandomSample>
@@ -214,13 +214,12 @@
    <un:sVal>Red</un:sVal><un:sVal>Green</un:sVal><un:sVal>Blue</un:sVal>
   </un:targetCategories>
   <un:counts>
-    <un:val><un:nVal>1</un:nVal></un:val>
-    <un:val><un:nVal>2</un:nVal></un:val>
-    <un:val><un:nVal>3</un:nVal></un:val>
-    <un:val><un:nVal>4</un:nVal></un:val>
-    <un:val><un:nVal>5</un:nVal></un:val>
-    <un:val><un:nVal>6</un:nVal></un:val>
-    <!-- TODO verify that this approach is suitable - also seen in the discreteProbability -->
+    <un:nnVal>1</un:nnVal>
+    <un:nnVal>2</un:nnVal>
+    <un:nnVal>3</un:nnVal>
+    <un:nnVal>4</un:nnVal>
+    <un:nnVal>5</un:nnVal>
+    <un:nnVal>6</un:nnVal>
   </un:counts>
  </un:ConfusionMatrix> 
     
