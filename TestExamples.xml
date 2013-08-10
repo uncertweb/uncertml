@@ -183,7 +183,7 @@
  </Distributions>
  <Samples>
   <un:RandomSample definition="http://www.uncertml.org/samples/random">
-   <un:samplingMethodDescription>Sampling Method</un:samplingMethodDescription>
+   <un:samplingMethodDescription><un:sVal>Sampling Method</un:sVal></un:samplingMethodDescription>
    <un:Realisation definition="http://www.uncertml.org/samples/realisation">
     <un:weight><un:prVal>0.5</un:prVal></un:weight>
     <un:value><un:rVal>3.14</un:rVal></un:value>

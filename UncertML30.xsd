@@ -285,7 +285,7 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractUncertaintyType">
                 <xs:sequence>
-                    <xs:element name="samplingMethodDescription" type="xs:string" minOccurs="0" />
+                    <xs:element name="samplingMethodDescription" type="un:CategoricalValueType" minOccurs="0" />
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
