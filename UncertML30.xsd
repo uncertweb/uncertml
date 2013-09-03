@@ -36,6 +36,12 @@
         </xs:restriction>
     </xs:simpleType>
     <xs:element name="prVal" type="un:posReal" />
+    <xs:simpleType name="nonNegReal">
+        <xs:restriction base="xs:double">
+            <xs:minInclusive value="0.0" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="nnrVal" type="un:nonNegReal" />
     <xs:simpleType name="natNum">
         <xs:restriction base="xs:integer">
             <xs:minInclusive value="0" />
@@ -104,6 +110,13 @@
         </xs:choice>
         <xs:attributeGroup ref="un:HREFAttributeGroup" />
     </xs:complexType>
+    <xs:complexType name="NonNegativeRealValueType">
+        <xs:choice>
+            <xs:element ref="un:var" />
+            <xs:element ref="un:nnrVal" />
+        </xs:choice>
+        <xs:attributeGroup ref="un:HREFAttributeGroup" />
+    </xs:complexType>
     <xs:complexType name="NaturalNumberValueType">
         <xs:choice>
             <xs:element ref="un:var" />
@@ -166,6 +179,16 @@
             <xs:choice minOccurs="1" maxOccurs="unbounded">
                 <xs:element ref="un:var" />
                 <xs:element ref="un:prVal" />
+            </xs:choice>
+        </xs:choice>
+        <xs:attributeGroup ref="un:HREFAttributeGroup" />
+    </xs:complexType>
+    <xs:complexType name="NonNegativeRealArrayValueType">
+        <xs:choice>
+            <xs:element ref="un:arrayVar" />
+            <xs:choice minOccurs="1" maxOccurs="unbounded">
+                <xs:element ref="un:var" />
+                <xs:element ref="un:nnrVal" />
             </xs:choice>
         </xs:choice>
         <xs:attributeGroup ref="un:HREFAttributeGroup" />
@@ -414,7 +437,7 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractSummaryStatisticType">
                 <xs:sequence>
-                    <xs:element name="value" type="un:PositiveRealValueType" />
+                    <xs:element name="value" type="un:NonNegativeRealValueType" />
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
@@ -757,7 +780,9 @@
             <xs:extension base="un:AbstractContinuousUnivariateDistributionType">
                 <xs:sequence>
                     <xs:element name="rate" type="un:PositiveRealValueType" />
+                    <!-- TODO - can this be zero? -->
                     <xs:element name="truncationLowerInclusiveBound" type="un:PositiveRealValueType" minOccurs="0" />
+                    <!-- TODO - can this be zero? -->
                     <xs:element name="truncationUpperInclusiveBound" type="un:PositiveRealValueType" minOccurs="0" />
                 </xs:sequence>
             </xs:extension>
@@ -775,8 +800,11 @@
             <xs:extension base="un:AbstractContinuousUnivariateDistributionType">
                 <xs:sequence>
                     <xs:element name="shape" type="un:PositiveRealValueType" />
+                    <!-- TODO - can this be zero? -->
                     <xs:element name="scale" type="un:PositiveRealValueType" />
+                    <!-- TODO - can this be zero? -->
                     <xs:element name="truncationLowerInclusiveBound" type="un:PositiveRealValueType" minOccurs="0" />
+                    <!-- TODO - can this be zero? -->
                     <xs:element name="truncationUpperInclusiveBound" type="un:PositiveRealValueType" minOccurs="0" />
                 </xs:sequence>
             </xs:extension>
@@ -794,8 +822,11 @@
             <xs:extension base="un:AbstractContinuousUnivariateDistributionType">
                 <xs:sequence>
                     <xs:element name="shape" type="un:PositiveRealValueType" />
+                    <!-- TODO - can this be zero? -->
                     <xs:element name="scale" type="un:PositiveRealValueType" />
+                    <!-- TODO - can this be zero? -->
                     <xs:element name="truncationLowerInclusiveBound" type="un:PositiveRealValueType" minOccurs="0" />
+                    <!-- TODO - can this be zero? -->
                     <xs:element name="truncationUpperInclusiveBound" type="un:PositiveRealValueType" minOccurs="0" />
                 </xs:sequence>
             </xs:extension>
@@ -814,9 +845,11 @@
                 <xs:sequence>
                     <xs:element name="mean" type="un:RealValueType" />
                     <xs:element name="varianceScaling" type="un:PositiveRealValueType" />
+                    <!-- TODO - can this be zero? -->
                     <xs:element name="truncationLowerInclusiveBoundN" type="un:RealValueType" minOccurs="0" />
                     <xs:element name="truncationUpperInclusiveBoundN" type="un:RealValueType" minOccurs="0" />
                     <xs:element name="shape" type="un:PositiveRealValueType" />
+                    <!-- TODO - can this be zero? -->
                     <xs:element name="scale" type="un:PositiveRealValueType" />
                     <xs:element name="truncationLowerInclusiveBoundIG" type="un:PositiveRealValueType" minOccurs="0" />
                     <xs:element name="truncationUpperInclusiveBoundIG" type="un:PositiveRealValueType" minOccurs="0" />
@@ -855,8 +888,8 @@
                 <xs:sequence>
                     <xs:element name="mean" type="un:RealValueType" />
                     <xs:choice>
-                        <xs:element name="variance" type="un:PositiveRealValueType" />
-                        <xs:element name="stddev" type="un:PositiveRealValueType" />
+                        <xs:element name="variance" type="un:NonNegativeRealValueType" />
+                        <xs:element name="stddev" type="un:NonNegativeRealValueType" />
                     </xs:choice>
                     <xs:element name="truncationLowerInclusiveBound" type="un:RealValueType" minOccurs="0" />
                     <xs:element name="truncationUpperInclusiveBound" type="un:RealValueType" minOccurs="0" />
@@ -929,7 +962,9 @@
                 <xs:sequence>
                     <xs:element name="logScale" type="un:RealValueType" />
                     <xs:element name="shape" type="un:PositiveRealValueType" />
+                    <!-- TODO - can this be zero? -->
                     <xs:element name="truncationLowerInclusiveBound" type="un:PositiveRealValueType" minOccurs="0" />
+                    <!-- TODO - can this be zero? -->
                     <xs:element name="truncationUpperInclusiveBound" type="un:PositiveRealValueType" minOccurs="0" />
                 </xs:sequence>
             </xs:extension>
@@ -948,6 +983,7 @@
                 <xs:sequence>
                     <xs:element name="location" type="un:RealValueType" />
                     <xs:element name="scale" type="un:PositiveRealValueType" />
+                    <!-- TODO - can this be zero? -->
                     <xs:element name="degreesOfFreedom" type="un:PositiveNaturalNumberValueType" />
                     <xs:element name="truncationLowerInclusiveBound" type="un:RealValueType" minOccurs="0" />
                     <xs:element name="truncationUpperInclusiveBound" type="un:RealValueType" minOccurs="0" />
@@ -1188,7 +1224,9 @@
             <xs:extension base="un:AbstractContinuousUnivariateDistributionType">
                 <xs:sequence>
                     <xs:element name="alpha" type="un:PositiveRealValueType" />
+                    <!-- TODO - can this be zero? -->
                     <xs:element name="beta" type="un:PositiveRealValueType" />
+                    <!-- TODO - can this be zero? -->
                     <xs:element name="truncationLowerInclusiveBound" type="un:ProbabilityValueType" minOccurs="0" />
                     <xs:element name="truncationUpperInclusiveBound" type="un:ProbabilityValueType" minOccurs="0" />
                 </xs:sequence>
@@ -1208,6 +1246,7 @@
                 <xs:sequence>
                     <xs:element name="location" type="un:RealValueType" />
                     <xs:element name="scale" type="un:PositiveRealValueType" />
+                    <!-- TODO - can this be zero? -->
                     <xs:element name="truncationLowerInclusiveBound" type="un:RealValueType" minOccurs="0" />
                     <xs:element name="truncationUpperInclusiveBound" type="un:RealValueType" minOccurs="0" />
                 </xs:sequence>
@@ -1227,6 +1266,7 @@
                 <xs:sequence>
                     <xs:element name="location" type="un:RealValueType" />
                     <xs:element name="scale" type="un:PositiveRealValueType" />
+                    <!-- TODO - can this be zero? -->
                     <xs:element name="truncationLowerInclusiveBound" type="un:RealValueType" minOccurs="0" />
                     <xs:element name="truncationUpperInclusiveBound" type="un:RealValueType" minOccurs="0" />
                 </xs:sequence>
@@ -1245,8 +1285,11 @@
             <xs:extension base="un:AbstractContinuousUnivariateDistributionType">
                 <xs:sequence>
                     <xs:element name="scale" type="un:PositiveRealValueType" />
+                    <!-- TODO - can this be zero? -->
                     <xs:element name="shape" type="un:PositiveRealValueType" />
+                    <!-- TODO - can this be zero? -->
                     <xs:element name="truncationLowerInclusiveBound" type="un:PositiveRealValueType" minOccurs="0" />
+                    <!-- TODO - can this be zero? -->
                     <xs:element name="truncationUpperInclusiveBound" type="un:PositiveRealValueType" minOccurs="0" />
                 </xs:sequence>
             </xs:extension>
@@ -1265,6 +1308,7 @@
                 <xs:sequence>
                     <xs:element name="location" type="un:RealValueType" />
                     <xs:element name="scale" type="un:PositiveRealValueType" />
+                    <!-- TODO - can this be zero? -->
                     <xs:element name="truncationLowerInclusiveBound" type="un:RealValueType" minOccurs="0" />
                     <xs:element name="truncationUpperInclusiveBound" type="un:RealValueType" minOccurs="0" />
                 </xs:sequence>
@@ -1284,6 +1328,7 @@
                 <xs:sequence>
                     <xs:element name="degreesOfFreedom" type="un:PositiveNaturalNumberValueType" />
                     <xs:element name="truncationLowerInclusiveBoundIG" type="un:PositiveRealValueType" minOccurs="0" />
+                    <!-- TODO - can this be zero? -->
                     <xs:element name="truncationUpperInclusiveBoundIG" type="un:PositiveRealValueType" minOccurs="0" />
                 </xs:sequence>
             </xs:extension>
@@ -1341,6 +1386,7 @@
                     <xs:element name="denominator" type="un:NaturalNumberValueType" />
                     <xs:element name="numerator" type="un:NaturalNumberValueType" />
                     <xs:element name="truncationLowerInclusiveBoundIG" type="un:PositiveRealValueType" minOccurs="0" />
+                    <!-- TODO - can this be zero? -->
                     <xs:element name="truncationUpperInclusiveBoundIG" type="un:PositiveRealValueType" minOccurs="0" />
                 </xs:sequence>
             </xs:extension>
@@ -1377,7 +1423,9 @@
             <xs:extension base="un:AbstractContinuousUnivariateDistributionType">
                 <xs:sequence>
                     <xs:element name="scale" type="un:PositiveRealValueType" />
+                    <!-- TODO - can this be zero? -->
                     <xs:element name="shape" type="un:PositiveRealValueType" />
+                    <!-- TODO - can this be zero? -->
                     <xs:element name="truncationLowerInclusiveBound" type="un:RealValueType" minOccurs="0" />
                     <xs:element name="truncationUpperInclusiveBound" type="un:RealValueType" minOccurs="0" />
                 </xs:sequence>
