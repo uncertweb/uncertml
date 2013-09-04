@@ -30,7 +30,7 @@
    <un:rVal>10.0</un:rVal>
   </un:mean>
   <un:variance>
-   <un:nnrVal>0.1</un:nnrVal>
+   <un:prVal>0.1</un:prVal>
   </un:variance>
 </un:NormalDistribution>  
   
@@ -49,7 +49,7 @@
           <un:rVal>10.0</un:rVal>
         </un:mean>
         <un:variance>
-          <un:nnrVal>1000.0</un:nnrVal>
+          <un:prVal>1000.0</un:prVal>
         </un:variance>
         <un:truncationLowerInclusiveBound>
           <un:rVal>0.0</un:rVal>
@@ -81,7 +81,7 @@
    <un:rVal>-24.1</un:rVal>
   </un:mean>
   <un:variance>
-   <un:nnrVal>34.1</un:nnrVal>
+   <un:prVal>34.1</un:prVal>
   </un:variance>
  </un:NormalDistribution>
 

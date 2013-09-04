@@ -437,7 +437,7 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractSummaryStatisticType">
                 <xs:sequence>
-                    <xs:element name="value" type="un:NonNegativeRealValueType" />
+                    <xs:element name="value" type="un:PositiveRealValueType" />
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
@@ -453,7 +453,7 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractSummaryStatisticType">
                 <xs:sequence>
-                    <xs:element name="value" type="un:RealValueType" />
+                    <xs:element name="value" type="un:PositiveRealValueType" />
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
@@ -803,8 +803,7 @@
                     <!-- TODO - can this be zero? -->
                     <xs:element name="scale" type="un:PositiveRealValueType" />
                     <!-- TODO - can this be zero? -->
-                    <xs:element name="truncationLowerInclusiveBound" type="un:PositiveRealValueType" minOccurs="0" />
-                    <!-- TODO - can this be zero? -->
+                    <xs:element name="truncationLowerInclusiveBound" type="un:NonNegativeRealValueType" minOccurs="0" />
                     <xs:element name="truncationUpperInclusiveBound" type="un:PositiveRealValueType" minOccurs="0" />
                 </xs:sequence>
             </xs:extension>
@@ -888,8 +887,8 @@
                 <xs:sequence>
                     <xs:element name="mean" type="un:RealValueType" />
                     <xs:choice>
-                        <xs:element name="variance" type="un:NonNegativeRealValueType" />
-                        <xs:element name="stddev" type="un:NonNegativeRealValueType" />
+                        <xs:element name="variance" type="un:PositiveRealValueType" />
+                        <xs:element name="stddev" type="un:PositiveRealValueType" />
                     </xs:choice>
                     <xs:element name="truncationLowerInclusiveBound" type="un:RealValueType" minOccurs="0" />
                     <xs:element name="truncationUpperInclusiveBound" type="un:RealValueType" minOccurs="0" />
