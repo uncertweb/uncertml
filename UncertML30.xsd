@@ -763,7 +763,7 @@
         <xs:complexContent>
             <xs:extension base="un:AbstractContinuousMultivariateDistributionType">
                 <xs:sequence>
-                    <xs:element name="concentration" type="un:PositiveRealValueType" />
+                    <xs:element name="concentration" type="un:PositiveRealValueType" maxOccurs="unbounded" />
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
@@ -943,7 +943,7 @@
             <xs:extension base="un:AbstractDiscreteMultivariateDistributionType">
                 <xs:sequence>
                     <xs:element name="numberOfTrials" type="un:NaturalNumberValueType" />
-                    <xs:element name="probabilities" type="un:ProbabilityValueType" />
+                    <xs:element name="probabilities" type="un:ProbabilityValueType" maxOccurs="unbounded" />
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
@@ -1326,9 +1326,9 @@
             <xs:extension base="un:AbstractContinuousUnivariateDistributionType">
                 <xs:sequence>
                     <xs:element name="degreesOfFreedom" type="un:PositiveNaturalNumberValueType" />
-                    <xs:element name="truncationLowerInclusiveBoundIG" type="un:PositiveRealValueType" minOccurs="0" />
+                    <xs:element name="truncationLowerInclusiveBound" type="un:PositiveRealValueType" minOccurs="0" />
                     <!-- TODO - can this be zero? -->
-                    <xs:element name="truncationUpperInclusiveBoundIG" type="un:PositiveRealValueType" minOccurs="0" />
+                    <xs:element name="truncationUpperInclusiveBound" type="un:PositiveRealValueType" minOccurs="0" />
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
@@ -1384,9 +1384,9 @@
                 <xs:sequence>
                     <xs:element name="denominator" type="un:NaturalNumberValueType" />
                     <xs:element name="numerator" type="un:NaturalNumberValueType" />
-                    <xs:element name="truncationLowerInclusiveBoundIG" type="un:PositiveRealValueType" minOccurs="0" />
+                    <xs:element name="truncationLowerInclusiveBound" type="un:PositiveRealValueType" minOccurs="0" />
                     <!-- TODO - can this be zero? -->
-                    <xs:element name="truncationUpperInclusiveBoundIG" type="un:PositiveRealValueType" minOccurs="0" />
+                    <xs:element name="truncationUpperInclusiveBound" type="un:PositiveRealValueType" minOccurs="0" />
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
@@ -1431,7 +1431,7 @@
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-    <xs:element name="WishartDistribution" substitutionGroup="un:AbstractDiscreteMultivariateDistribution">
+    <xs:element name="WishartDistribution" substitutionGroup="un:AbstractContinuousMultivariateDistribution">
         <xs:complexType>
             <xs:complexContent>
                 <xs:extension base="un:WishartDistributionType" />
@@ -1440,7 +1440,7 @@
     </xs:element>
     <xs:complexType name="WishartDistributionType">
         <xs:complexContent>
-            <xs:extension base="un:AbstractDiscreteMultivariateDistributionType">
+            <xs:extension base="un:AbstractContinuousMultivariateDistributionType">
                 <xs:sequence>
                     <xs:element name="degreesOfFreedom" type="un:posReal" />
                     <!--TODO - tried to make this into a prVal but doesn't work, either by ref or type 
