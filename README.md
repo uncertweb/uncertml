@@ -1,4 +1,4 @@
-uncertml
-========
+UncertML XML Schema
+===================
 
-The Uncertainty Markup Language 
+This is *version 3.0* of the Uncertainty Markup Language XML Schema, along with associated files.
